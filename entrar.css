@@ -1,0 +1,261 @@
+:root {
+    --cor-primaria: #28a745;
+    --cor-primaria-hover: #218838;
+    --cor-fundo: #f4f7f6;
+    --cor-branco: #ffffff;
+    --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alterado para alinhar ao topo */
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--cor-fundo);
+    margin: 0;
+}
+
+/* BARRA SUPERIOR E SELETOR DE IDIOMA */
+.top-bar {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--cor-branco);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.top-bar .container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.language-switcher { display: flex; gap: 5px; border: 1px solid #ddd; border-radius: 20px; padding: 2px; }
+.language-switcher a { color: #666; text-decoration: none; padding: 4px 10px; font-size: 0.8em; font-weight: 600; border-radius: 20px; transition: all 0.3s; }
+.language-switcher a.active { background-color: var(--cor-primaria); color: #fff; }
+
+main.login-wrapper {
+    text-align: center;
+    width: 100%;
+    padding: 40px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo { max-width: 180px; margin-bottom: 20px; }
+
+.login-container {
+    background-color: var(--cor-branco);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-suave);
+    width: 90%;
+    max-width: 400px;
+    display: inline-block;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.form-group { position: relative; margin-bottom: 20px; }
+.form-group .icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; z-index: 2; }
+.password-toggle { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #aaa; cursor: pointer; z-index: 2; }
+.form-group input {
+    width: 100%;
+    padding: 12px 12px 12px 45px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+.form-group input:focus { outline: none; border-color: var(--cor-primaria); }
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-container button:hover { background-color: var(--cor-primaria-hover); }
+.login-container button:disabled { background-color: #aaa; cursor: not-allowed; }
+
+.message {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    display: none;
+}
+.message.error { background-color: #f8d7da; color: #721c24; display: block; }
+.message.success { background-color: #d4edda; color: #155724; display: block; }
+.message a { color: #721c24; font-weight: bold; }
+
+.form-links { text-align: center; margin-top: 20px; font-size: 0.9em; }
+.form-links a { color: var(--cor-primaria); text-decoration: none; font-weight: 600; }
+.form-links a:hover { text-decoration: underline; }
+
+.site-footer {
+    width: 100%;
+    background-color: #333;
+    color: #ccc;
+    padding: 40px 0;
+    font-size: 0.9em;
+}
+.site-footer .interface { max-width: 1280px; margin: 0 auto; padding: 0 2%; }
+.footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
+.footer-section { flex: 1; min-width: 250px; }
+.footer-logo { max-width: 140px; margin-bottom: 15px; filter: grayscale(100%) brightness(200%); }
+.footer-section h4 { color: #fff; margin-bottom: 15px; border-bottom: 1px solid #555; padding-bottom: 10px; }
+.footer-section p { line-height: 1.6; color: #ccc; }
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section ul li { margin-bottom: 10px; }
+.footer-section ul li a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+.footer-section ul li a:hover { color: var(--cor-branco); }
+.footer-section.social a { color: #ccc; margin-right: 15px; font-size: 1.5em; transition: color 0.3s ease; }
+.footer-section.social a:hover { color: var(--cor-primaria); }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #555; color: #888; }
+/* ============================================= */
+/* === CÓDIGO DE RESPONSIVIDADE UNIVERSAL === */
+/* ============================================= */
+
+/* Regra de Ouro: Imagens Flexíveis */
+/* Impede que imagens quebrem o layout em telas pequenas. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Base do Layout Fluido */
+/* A classe .interface controla a largura do conteúdo principal. */
+.interface {
+    width: 90%; /* Ocupa 90% da tela */
+    max-width: 1280px; /* Limite para telas muito grandes */
+    margin: 0 auto; /* Centraliza */
+}
+
+
+/* --- ESTILOS PADRÃO (MOBILE FIRST) --- */
+/* Como os elementos se comportam em telas pequenas (layout de coluna única) */
+
+/* Títulos das Seções */
+.section-title {
+    font-size: 2em; /* Tamanho bom para celular */
+    text-align: center;
+}
+
+.section-subtitle {
+    text-align: center;
+}
+
+/* Grids de Conteúdo (Compromissos, Produtos, etc.) */
+/* Por padrão, todos os grids serão uma coluna no celular. */
+.commitments-grid,
+.product-grid, /* Lembre-se que criamos esta classe no JS */
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 30px; /* Espaçamento entre os itens empilhados */
+}
+
+/* Garante que o header se ajuste bem no mobile */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Esconde o menu de desktop e mostra o botão "sanduíche" no celular */
+.menu-desktop {
+    display: none;
+}
+.btn-abrir-menu {
+    display: block;
+}
+
+
+/* --- TABLETS (Telas a partir de 768px de largura) --- */
+@media (min-width: 768px) {
+
+    /* Ajusta o tamanho dos títulos para telas maiores */
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    /* O grid de "Nossos Compromissos" agora terá 3 colunas */
+    .commitments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* O grid de produtos terá 2 colunas no tablet */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    /* O rodapé se organiza em um grid de 2x2 */
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+
+/* --- DESKTOPS (Telas a partir de 1024px de largura) --- */
+@media (min-width: 1024px) {
+
+    /* Mostra o menu de desktop e esconde o botão "sanduíche" */
+    .menu-desktop {
+        display: block;
+    }
+    .btn-abrir-menu {
+        display: none;
+    }
+
+    /* Ajusta os títulos para telas grandes */
+    .section-title {
+        font-size: 3em;
+    }
+
+    /* O grid de produtos agora terá 3 colunas no desktop */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* O rodapé agora terá 4 colunas, uma para cada seção */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Ajuste fino para a primeira seção do rodapé (com a logo) */
+    .footer-content .footer-section.about {
+        grid-column: span 1; /* Ocupa uma coluna */
+    }
+}

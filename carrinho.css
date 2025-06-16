@@ -1,0 +1,237 @@
+:root {
+    --cor-primaria: #28a745;
+    --cor-primaria-hover: #218838;
+    --cor-fundo: #f4f7f6;
+    --cor-branco: #ffffff;
+    --cor-secundaria-fundo: #e9ecef; /* cor do sumário e header da tabela */
+    --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+    color: #333;
+}
+/* BARRA SUPERIOR E SELETOR DE IDIOMA */
+.top-bar {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.top-bar .container-top {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.language-switcher { display: flex; gap: 5px; border: 1px solid #ddd; border-radius: 20px; padding: 2px; }
+.language-switcher a { color: #666; text-decoration: none; padding: 4px 10px; font-size: 0.8em; font-weight: 600; border-radius: 20px; transition: all 0.3s; }
+.language-switcher a.active { background-color: var(--cor-primaria); color: #fff; }
+
+header {
+    background-color: var(--cor-primaria);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+header h1 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 2em;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: var(--cor-branco);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--sombra-suave);
+}
+.cart-container h2 {
+    color: var(--cor-primaria);
+    border-bottom: 2px solid var(--cor-primaria);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.cart-items table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.cart-items th, .cart-items td {
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+.cart-items th {
+    background-color: var(--cor-secundaria-fundo);
+    font-weight: 600;
+}
+.cart-items td img { width: 60px; height: 60px; border-radius: 8px; margin-right: 15px; object-fit: cover; }
+.quantity-controls { display: flex; align-items: center; }
+.quantity-controls button { background: #e0e0e0; color: #333; border: 1px solid #ccc; padding: 5px 10px; cursor: pointer; border-radius: 5px; }
+.quantity-controls span { padding: 0 15px; font-weight: bold; }
+.action-btn { background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer; padding: 8px 12px; }
+
+.summary-container { display: flex; justify-content: flex-end; }
+.summary-box { background-color: var(--cor-secundaria-fundo); padding: 20px; border-radius: 8px; min-width: 300px; }
+.summary-box p { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.summary-box .total { font-size: 1.2em; font-weight: bold; color: var(--cor-primaria); border-top: 1px solid #ddd; padding-top: 10px; }
+
+.cart-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; flex-wrap: wrap; gap: 10px; }
+.cart-actions button { padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; font-family: 'Poppins', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: background-color 0.3s; }
+.checkout-btn { background: var(--cor-primaria); color: white; }
+.back-btn { background: #777; color: white; }
+.clear-cart-btn { background: #f44336; color: white; }
+
+.empty-cart-message { text-align: center; padding: 40px 20px; background-color: var(--cor-secundaria-fundo); border-radius: 8px; }
+.empty-cart-message p { font-size: 1.2em; }
+.empty-cart-message a { color: var(--cor-primaria); font-weight: bold; }
+/* ------------------- RODAPÉ ------------------- */
+.site-footer { background-color: #333; color: #ccc; padding: 40px 0; font-size: 0.9em; }
+.footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 30px; }
+.footer-section { flex: 1; min-width: 220px; }
+.footer-logo { max-width: 140px; margin-bottom: 15px; filter: grayscale(100%) brightness(200%); }
+.footer-section h4 { color: #fff; margin-bottom: 15px; border-bottom: 1px solid #555; padding-bottom: 10px; }
+.footer-section p { line-height: 1.6; color: #ccc; }
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section ul li { margin-bottom: 10px; }
+.footer-section ul li a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+.footer-section ul li a:hover { color: var(--cor-branco); }
+.footer-section .bi { margin-right: 8px; color: var(--cor-primaria); }
+.footer-section.social a { color: #ccc; margin-right: 15px; font-size: 1.5em; transition: color 0.3s ease; }
+.footer-section.social a:hover { color: var(--cor-primaria); }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #555; color: #888; }
+.btn-admin { display: inline-block; margin-top: 15px; padding: 6px 12px; font-size: 0.8em; color: #ccc; background-color: #555; border-radius: 5px; text-decoration: none; transition: background-color 0.3s; }
+.btn-admin:hover { background-color: var(--cor-primaria); color: var(--cor-branco); }
+/* ============================================= */
+/* === CÓDIGO DE RESPONSIVIDADE UNIVERSAL === */
+/* ============================================= */
+
+/* Regra de Ouro: Imagens Flexíveis */
+/* Impede que imagens quebrem o layout em telas pequenas. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Base do Layout Fluido */
+/* A classe .interface controla a largura do conteúdo principal. */
+.interface {
+    width: 90%; /* Ocupa 90% da tela */
+    max-width: 1280px; /* Limite para telas muito grandes */
+    margin: 0 auto; /* Centraliza */
+}
+
+
+/* --- ESTILOS PADRÃO (MOBILE FIRST) --- */
+/* Como os elementos se comportam em telas pequenas (layout de coluna única) */
+
+/* Títulos das Seções */
+.section-title {
+    font-size: 2em; /* Tamanho bom para celular */
+    text-align: center;
+}
+
+.section-subtitle {
+    text-align: center;
+}
+
+/* Grids de Conteúdo (Compromissos, Produtos, etc.) */
+/* Por padrão, todos os grids serão uma coluna no celular. */
+.commitments-grid,
+.product-grid, /* Lembre-se que criamos esta classe no JS */
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 30px; /* Espaçamento entre os itens empilhados */
+}
+
+/* Garante que o header se ajuste bem no mobile */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Esconde o menu de desktop e mostra o botão "sanduíche" no celular */
+.menu-desktop {
+    display: none;
+}
+.btn-abrir-menu {
+    display: block;
+}
+
+
+/* --- TABLETS (Telas a partir de 768px de largura) --- */
+@media (min-width: 768px) {
+
+    /* Ajusta o tamanho dos títulos para telas maiores */
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    /* O grid de "Nossos Compromissos" agora terá 3 colunas */
+    .commitments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* O grid de produtos terá 2 colunas no tablet */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    /* O rodapé se organiza em um grid de 2x2 */
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+
+/* --- DESKTOPS (Telas a partir de 1024px de largura) --- */
+@media (min-width: 1024px) {
+
+    /* Mostra o menu de desktop e esconde o botão "sanduíche" */
+    .menu-desktop {
+        display: block;
+    }
+    .btn-abrir-menu {
+        display: none;
+    }
+
+    /* Ajusta os títulos para telas grandes */
+    .section-title {
+        font-size: 3em;
+    }
+
+    /* O grid de produtos agora terá 3 colunas no desktop */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* O rodapé agora terá 4 colunas, uma para cada seção */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Ajuste fino para a primeira seção do rodapé (com a logo) */
+    .footer-content .footer-section.about {
+        grid-column: span 1; /* Ocupa uma coluna */
+    }
+}

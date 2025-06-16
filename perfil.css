@@ -1,0 +1,194 @@
+:root {
+    --cor-primaria: #28a745;
+    --cor-primaria-hover: #218838;
+    --cor-secundaria: #dc3545;
+    --cor-texto: #333;
+    --cor-texto-claro: #666;
+    --cor-fundo: #f4f7f6;
+    --cor-branco: #ffffff;
+    --sombra-card: 0 4px 8px rgba(0,0,0,0.1);
+}
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    margin: 0;
+    padding: 0;
+    color: var(--cor-texto);
+}
+/* BARRA SUPERIOR E SELETOR DE IDIOMA */
+.top-bar {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.top-bar .container-top {
+    width: 90%;
+    max-width: 900px; /* Alinha com o conteúdo */
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.language-switcher { display: flex; gap: 5px; border: 1px solid #ddd; border-radius: 20px; padding: 2px; }
+.language-switcher a { color: #666; text-decoration: none; padding: 4px 10px; font-size: 0.8em; font-weight: 600; border-radius: 20px; transition: all 0.3s; }
+.language-switcher a.active { background-color: var(--cor-primaria); color: #fff; }
+
+.perfil-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: transparent;
+    padding: 20px;
+}
+h1 { text-align: center; color: var(--cor-texto); margin-bottom: 30px; font-size: 2.5em; }
+h2 { color: var(--cor-primaria); margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid var(--cor-primaria); padding-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.info-section { background-color: var(--cor-branco); padding: 25px; border-radius: 12px; box-shadow: var(--sombra-card); margin-bottom: 25px; }
+.info-section p { font-size: 16px; color: var(--cor-texto-claro); line-height: 1.6; }
+#foto-section { display: flex; flex-direction: column; align-items: center; position: relative; }
+.foto-perfil-wrapper { position: relative; cursor: pointer; }
+#foto-perfil { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--cor-primaria); transition: filter 0.3s ease; }
+.foto-perfil-wrapper:hover #foto-perfil { filter: brightness(0.8); }
+.foto-perfil-wrapper::after { content: '\F4F2'; font-family: 'bootstrap-icons'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 32px; opacity: 0; transition: opacity 0.3s ease; }
+.foto-perfil-wrapper:hover::after { opacity: 1; }
+#input-foto { display: none; }
+#dados-pessoais .header { display: flex; justify-content: space-between; align-items: center; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: middle; }
+th { background-color: var(--cor-primaria); color: white; font-weight: bold; }
+tbody tr:nth-child(even) { background-color: #f9f9f9; }
+.btn { padding: 10px 20px; background-color: var(--cor-primaria); color: white; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-flex; align-items:center; gap: 8px; margin-right: 10px; transition: background-color 0.3s ease, transform 0.2s ease; font-weight: 500; font-family: 'Poppins', sans-serif; font-size: 1em; }
+.btn:hover { background-color: var(--cor-primaria-hover); transform: scale(1.05); }
+.btn-edit { background-color: #6c757d; }
+.btn-edit:hover { background-color: #5a6268; }
+.btn-logout { background-color: var(--cor-secundaria); }
+.btn-logout:hover { background-color: #c82333; }
+.btn-track { background-color: #007bff; color: white; padding: 5px 10px; font-size: 0.9em; border-radius: 5px; }
+.btn-track:hover { background-color: #0056b3; }
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+.modal-content { background-color: #fefefe; margin: 10% auto; padding: 30px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 12px; }
+.close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+.form-group input { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+/* ============================================= */
+/* === CÓDIGO DE RESPONSIVIDADE UNIVERSAL === */
+/* ============================================= */
+
+/* Regra de Ouro: Imagens Flexíveis */
+/* Impede que imagens quebrem o layout em telas pequenas. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Base do Layout Fluido */
+/* A classe .interface controla a largura do conteúdo principal. */
+.interface {
+    width: 90%; /* Ocupa 90% da tela */
+    max-width: 1280px; /* Limite para telas muito grandes */
+    margin: 0 auto; /* Centraliza */
+}
+
+
+/* --- ESTILOS PADRÃO (MOBILE FIRST) --- */
+/* Como os elementos se comportam em telas pequenas (layout de coluna única) */
+
+/* Títulos das Seções */
+.section-title {
+    font-size: 2em; /* Tamanho bom para celular */
+    text-align: center;
+}
+
+.section-subtitle {
+    text-align: center;
+}
+
+/* Grids de Conteúdo (Compromissos, Produtos, etc.) */
+/* Por padrão, todos os grids serão uma coluna no celular. */
+.commitments-grid,
+.product-grid, /* Lembre-se que criamos esta classe no JS */
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 30px; /* Espaçamento entre os itens empilhados */
+}
+
+/* Garante que o header se ajuste bem no mobile */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Esconde o menu de desktop e mostra o botão "sanduíche" no celular */
+.menu-desktop {
+    display: none;
+}
+.btn-abrir-menu {
+    display: block;
+}
+
+
+/* --- TABLETS (Telas a partir de 768px de largura) --- */
+@media (min-width: 768px) {
+
+    /* Ajusta o tamanho dos títulos para telas maiores */
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    /* O grid de "Nossos Compromissos" agora terá 3 colunas */
+    .commitments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* O grid de produtos terá 2 colunas no tablet */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    /* O rodapé se organiza em um grid de 2x2 */
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+
+/* --- DESKTOPS (Telas a partir de 1024px de largura) --- */
+@media (min-width: 1024px) {
+
+    /* Mostra o menu de desktop e esconde o botão "sanduíche" */
+    .menu-desktop {
+        display: block;
+    }
+    .btn-abrir-menu {
+        display: none;
+    }
+
+    /* Ajusta os títulos para telas grandes */
+    .section-title {
+        font-size: 3em;
+    }
+
+    /* O grid de produtos agora terá 3 colunas no desktop */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* O rodapé agora terá 4 colunas, uma para cada seção */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Ajuste fino para a primeira seção do rodapé (com a logo) */
+    .footer-content .footer-section.about {
+        grid-column: span 1; /* Ocupa uma coluna */
+    }
+}

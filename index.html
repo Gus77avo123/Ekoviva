@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eKoviva - Por um Futuro Sustentável</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="interface">
+            <div class="header-content">
+                <div class="logotipo">
+                    <a href="index.html"><img src="./imagem/logo2.png" alt="Logotipo eKoviva" /></a>
+                </div>
+                
+                <nav class="menu-desktop">
+                    <ul>
+                        <li><a href="#products" data-lang-key="navProducts">Produtos</a></li>
+                        <li><a href="sobre.html" target="_blank" data-lang-key="navAbout">Sobre</a></li>
+                        <li id="auth-menu-container"></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="language-switcher">
+                        <a href="#" class="lang-link active" data-lang="pt">PT</a>
+                        <a href="#" class="lang-link" data-lang="en">EN</a>
+                    </div>
+                    <div class="header-cart">
+                        <a href="carrinho.html" aria-label="Ver carrinho de compras">
+                            <i class="bi bi-cart3"></i>
+                            <span id="cart-item-count" class="cart-badge" style="display: none;">0</span>
+                        </a>
+                    </div>
+                    <button class="btn-abrir-menu" id="btn-menu-abrir" aria-label="Abrir menu">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-movel" id="menu-movel">
+        <button class="btn-fechar" id="btn-menu-fechar" aria-label="Fechar menu"><i class="bi bi-x-lg"></i></button>
+        <nav>
+            <ul>
+                <li><a href="#products" data-lang-key="navProductsMobile">Produtos</a></li>
+                <li><a href="sobre.html" target="_blank" data-lang-key="navAboutMobile">Sobre</a></li>
+                <li id="auth-menu-container-movel"></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="overlay-menu" id="overlay-menu"></div>
+
+    <main>
+        <section class="hero">
+            <div class="interface">
+                <h1 data-aos="fade-up" data-lang-key="heroTitle">Pequenas Escolhas, Grande Impacto.</h1>
+                <p data-aos="fade-up" data-aos-delay="200" data-lang-key="heroSubtitle">Descubra produtos que cuidam de você e do planeta. Junte-se a nós na jornada por um futuro mais sustentável.</p>
+                <a href="#products" class="btn-primary" data-aos="fade-up" data-aos-delay="400" data-lang-key="heroButton">Ver Produtos</a>
+            </div>
+        </section>
+
+        <section class="commitments">
+            <div class="interface">
+                <h2 class="section-title" data-lang-key="commitmentsTitle">Nossos Compromissos</h2>
+                <p class="section-subtitle" data-lang-key="commitmentsSubtitle">O eKoviva é um projeto acadêmico guiado por princípios que unem tecnologia, educação e sustentabilidade.</p>
+                <div class="commitments-grid">
+                    <div class="commitment-card" data-aos="fade-up">
+                        <i class="bi bi-tree icon"></i>
+                        <h3 data-lang-key="commitment1Title">100% Sustentável</h3>
+                        <p data-lang-key="commitment1Desc">Selecionamos produtos de fontes responsáveis, com materiais reciclados ou biodegradáveis.</p>
+                    </div>
+                    <div class="commitment-card" data-aos="fade-up" data-aos-delay="200">
+                        <i class="bi bi-people icon"></i>
+                        <h3 data-lang-key="commitment2Title">Apoio Local</h3>
+                        <p data-lang-key="commitment2Desc">Valorizamos e apoiamos pequenos produtores e artesãos que compartilham da nossa visão.</p>
+                    </div>
+                    <div class="commitment-card" data-aos="fade-up" data-aos-delay="400">
+                        <i class="bi bi-lightbulb icon"></i>
+                        <h3 data-lang-key="commitment3Title">Propósito Educacional</h3>
+                        <p data-lang-key="commitment3Desc">Aplicamos nosso conhecimento de ADS para criar uma plataforma que inspira a mudança.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <div class="interface">
+                <h2 class="section-title" data-lang-key="featuredTitle">Destaques do Mês</h2>
+                <p class="section-subtitle" data-lang-key="featuredSubtitle">Nossos produtos mais amados, escolhidos para inspirar sua jornada.</p>
+                
+                <div class="featured-slider-container">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <div class="interface">
+                <h2 class="section-title" data-lang-key="productsTitle">Nossa Seleção Sustentável</h2>
+                <p class="section-subtitle" data-lang-key="productsSubtitle">Produtos pensados para facilitar sua rotina e diminuir sua pegada ecológica.</p>
+                <div class="product-list">
+                    </div>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <div class="interface">
+                <h2 data-aos="fade-up" data-lang-key="ctaTitle">Faça Parte da Mudança</h2>
+                <p data-aos="fade-up" data-aos-delay="200" data-lang-key="ctaSubtitle">Crie sua conta para acompanhar seus pedidos e fazer parte de uma comunidade que se importa.</p>
+                <a href="cadastro.html" class="btn-secondary" data-aos="fade-up" data-aos-delay="400" data-lang-key="ctaButton">Cadastre-se Agora</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="interface">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <a href="index.html"><img src="./imagem/logo2.png" alt="Logotipo eKoviva" class="footer-logo"></a>
+                    <p data-lang-key="footerDesc">Um projeto de estudantes de ADS para um mundo mais sustentável.</p>
+                </div>
+                <div class="footer-section links">
+                    <h4 data-lang-key="footerNav">Navegação</h4>
+                    <ul>
+                        <li><a href="sobre.html" data-lang-key="footerAbout">Sobre o Projeto</a></li>
+                        <li><a href="#products" data-lang-key="footerProducts">Produtos</a></li>
+                        <li><a href="cadastro.html" data-lang-key="footerRegister">Cadastro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h4 data-lang-key="footerContact">Contato</h4>
+                    <p>
+                        <i class="bi bi-geo-alt-fill"></i> Av. Exemplo Fictício, 1234<br>
+                        São Paulo, SP - 01234-567<br>
+                        <i class="bi bi-envelope-fill"></i> contato@ekoviva.com.br<br>
+                        <i class="bi bi-telephone-fill"></i> (11) 98765-4321
+                    </p>
+                </div>
+            <div class="footer-section social">
+    <h4 data-lang-key="footerSocial">Siga-nos</h4>
+    
+    <a href="https://www.instagram.com/SEU_USUARIO_AQUI" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+    
+    <a href="https://www.facebook.com/SUA_PAGINA_AQUI" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+    
+    <a href="https://wa.me/5511999998888" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+</div>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang-key="footerRights">&copy; 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos reservados.</p>
+                <p style="font-size: 0.8em; margin-top: 10px; color: #aaa;" data-lang-key="footerLgpd">
+                    Este site respeita a sua privacidade. Estamos em conformidade com a Lei Geral de Proteção de Dados (LGPD). Para saber mais, acesse nossa <a href="politica-privacidade.html" target="_blank" style="color: #ccc; text-decoration: underline;">Política de Privacidade</a>.
+                </p>
+                <a href="bancodedados.html" class="btn-admin" target="_blank" data-lang-key="footerAdmin">Gerenciar Dados</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    
+    <script src="index.js"></script>
+</body>
+</html>

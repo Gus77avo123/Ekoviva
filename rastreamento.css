@@ -1,0 +1,254 @@
+:root {
+    --cor-primaria: #2E7D32;
+    --cor-primaria-hover: #1B5E20;
+    --cor-cinza: #ccc;
+    --cor-texto: #333;
+    --cor-fundo: #f4f7f6;
+    --cor-branco: #ffffff;
+    --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+.top-bar {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.top-bar .container-top {
+    width: 90%;
+    max-width: 600px; /* Alinha com o conteúdo */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.language-switcher { display: flex; gap: 5px; border: 1px solid #ddd; border-radius: 20px; padding: 2px; }
+.language-switcher a { color: #666; text-decoration: none; padding: 4px 10px; font-size: 0.8em; font-weight: 600; border-radius: 20px; transition: all 0.3s; }
+.language-switcher a.active { background-color: var(--cor-primaria); color: #fff; }
+
+a.back-to-profile {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+a.back-to-profile:hover { text-decoration: underline; }
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: var(--cor-branco);
+    padding: 40px;
+    box-shadow: var(--sombra-card);
+    border-radius: 12px;
+    margin: 30px auto;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.input-group { position: relative; margin-bottom: 20px; }
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    padding-left: 45px; 
+    border: 1px solid var(--cor-cinza);
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+input[type="text"]:focus { outline: none; border-color: var(--cor-primaria); }
+.input-group .icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--cor-cinza); }
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+button:hover { background-color: var(--cor-primaria-hover); }
+
+#result, #error-message { margin-top: 30px; padding: 20px; border-radius: 8px; display: none; }
+#error-message { background: #ffebee; border-left: 5px solid #c62828; color: #c62828; }
+
+.timeline { list-style-type: none; padding: 0; margin-top: 20px; }
+.timeline li { position: relative; padding: 10px 0 30px 40px; border-left: 2px solid var(--cor-cinza); }
+.timeline li:last-child { border-left: 2px solid transparent; }
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--cor-branco);
+    border: 3px solid var(--cor-cinza);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.timeline li.completed::before { background-color: var(--cor-primaria); border-color: var(--cor-primaria); }
+.timeline li.completed { border-left-color: var(--cor-primaria); }
+.timeline li span { font-weight: 600; }
+.timeline li p { margin: 5px 0 0; color: #666; font-size: 14px; }
+
+.spinner {
+    margin: 20px auto 0;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0,0,0,0.1);
+    border-left-color: var(--cor-primaria);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+#btn-confirmar-entrega { background-color: #ff9800; margin-top: 20px; }
+#btn-confirmar-entrega:hover { background-color: #f57c00; }
+/* ============================================= */
+/* === CÓDIGO DE RESPONSIVIDADE UNIVERSAL === */
+/* ============================================= */
+
+/* Regra de Ouro: Imagens Flexíveis */
+/* Impede que imagens quebrem o layout em telas pequenas. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Base do Layout Fluido */
+/* A classe .interface controla a largura do conteúdo principal. */
+.interface {
+    width: 90%; /* Ocupa 90% da tela */
+    max-width: 1280px; /* Limite para telas muito grandes */
+    margin: 0 auto; /* Centraliza */
+}
+
+
+/* --- ESTILOS PADRÃO (MOBILE FIRST) --- */
+/* Como os elementos se comportam em telas pequenas (layout de coluna única) */
+
+/* Títulos das Seções */
+.section-title {
+    font-size: 2em; /* Tamanho bom para celular */
+    text-align: center;
+}
+
+.section-subtitle {
+    text-align: center;
+}
+
+/* Grids de Conteúdo (Compromissos, Produtos, etc.) */
+/* Por padrão, todos os grids serão uma coluna no celular. */
+.commitments-grid,
+.product-grid, /* Lembre-se que criamos esta classe no JS */
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 30px; /* Espaçamento entre os itens empilhados */
+}
+
+/* Garante que o header se ajuste bem no mobile */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Esconde o menu de desktop e mostra o botão "sanduíche" no celular */
+.menu-desktop {
+    display: none;
+}
+.btn-abrir-menu {
+    display: block;
+}
+
+
+/* --- TABLETS (Telas a partir de 768px de largura) --- */
+@media (min-width: 768px) {
+
+    /* Ajusta o tamanho dos títulos para telas maiores */
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    /* O grid de "Nossos Compromissos" agora terá 3 colunas */
+    .commitments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* O grid de produtos terá 2 colunas no tablet */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    /* O rodapé se organiza em um grid de 2x2 */
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+
+/* --- DESKTOPS (Telas a partir de 1024px de largura) --- */
+@media (min-width: 1024px) {
+
+    /* Mostra o menu de desktop e esconde o botão "sanduíche" */
+    .menu-desktop {
+        display: block;
+    }
+    .btn-abrir-menu {
+        display: none;
+    }
+
+    /* Ajusta os títulos para telas grandes */
+    .section-title {
+        font-size: 3em;
+    }
+
+    /* O grid de produtos agora terá 3 colunas no desktop */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* O rodapé agora terá 4 colunas, uma para cada seção */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Ajuste fino para a primeira seção do rodapé (com a logo) */
+    .footer-content .footer-section.about {
+        grid-column: span 1; /* Ocupa uma coluna */
+    }
+}

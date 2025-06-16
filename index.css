@@ -1,0 +1,267 @@
+/* ------------------- GERAL E VARIÁVEIS ------------------- */
+:root {
+    --cor-primaria: #28a745;
+    --cor-primaria-hover: #218838;
+    --cor-secundaria: #f3f9f3;
+    --cor-texto-principal: #333;
+    --cor-texto-secundario: #666;
+    --cor-branco: #ffffff;
+    --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--cor-branco); color: var(--cor-texto-principal); overflow-x: hidden; }
+.interface { max-width: 1280px; margin: 0 auto; padding: 0 4%; }
+
+/* ------------------- CABEÇALHO ------------------- */
+header { box-shadow: 0 2px 10px rgba(0,0,0,0.05); background-color: var(--cor-branco); position: sticky; top: 0; z-index: 1000; }
+.header-content { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; }
+.logotipo img { max-width: 130px; }
+nav.menu-desktop ul { list-style-type: none; display: flex; gap: 30px; align-items: center; }
+nav.menu-desktop ul li a { text-decoration: none; color: var(--cor-texto-secundario); font-weight: 600; transition: color 0.3s; padding: 5px 0; }
+nav.menu-desktop ul li a:hover { color: var(--cor-primaria); }
+.header-actions { display: flex; align-items: center; gap: 15px; }
+.header-cart a { color: var(--cor-texto-principal); text-decoration: none; font-size: 1.8em; position: relative; display: inline-block; transition: color 0.3s ease; }
+.header-cart a:hover { color: var(--cor-primaria); }
+.cart-badge { position: absolute; top: -8px; right: -12px; background-color: #E91E63; color: white; border-radius: 50%; padding: 3px 7px; font-size: 0.6em; font-weight: bold; border: 2px solid white; }
+.droop-hover { position: relative; }
+.droop-hover .drop { display: none; position: absolute; top: 100%; right: 0; background-color: var(--cor-branco); box-shadow: var(--sombra-suave); border-radius: 8px; padding: 10px; width: 200px; z-index: 100; margin-top: 10px; }
+.droop-hover:hover .drop { display: block; }
+.drop a { display: block; padding: 10px; border-radius: 5px; }
+.drop a:hover { background-color: var(--cor-secundaria); }
+.btn-login { background-color: var(--cor-primaria); color: white !important; padding: 8px 20px; border-radius: 20px; transition: background-color 0.3s; }
+.btn-login:hover { background-color: var(--cor-primaria-hover); color: white !important; }
+
+/* SELETOR DE IDIOMA */
+.language-switcher { display: flex; gap: 5px; border: 1px solid #ddd; border-radius: 20px; padding: 2px; }
+.language-switcher a { color: var(--cor-texto-secundario); text-decoration: none; padding: 4px 10px; font-size: 0.8em; font-weight: 600; border-radius: 20px; transition: all 0.3s; }
+.language-switcher a.active { background-color: var(--cor-primaria); color: var(--cor-branco); }
+
+
+.btn-abrir-menu { display: none; }
+.menu-movel { display: none; }
+
+/* ------------------- SEÇÃO HERO ------------------- */
+.hero { background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1492496913980-501348b61469?q=80&w=2574&auto=format&fit=crop'); background-size: cover; background-position: center; padding: 100px 0; text-align: center; color: var(--cor-branco); }
+.hero h1 { font-size: 3.2em; font-weight: 700; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+.hero p { font-size: 1.2em; margin: 15px auto 30px auto; font-weight: 300; max-width: 700px; }
+.btn-primary { background-color: var(--cor-primaria); color: var(--cor-branco); text-decoration: none; padding: 15px 35px; border-radius: 30px; font-weight: 600; transition: all 0.3s ease; }
+.btn-primary:hover { background-color: var(--cor-primaria-hover); transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+/* ------------------- SEÇÕES GERAIS ------------------- */
+.commitments, .featured-products, .products, .cta { padding: 80px 0; }
+.section-title { text-align: center; font-size: 2.2em; margin-bottom: 15px; }
+.section-subtitle { text-align: center; color: var(--cor-texto-secundario); max-width: 600px; margin: 0 auto 50px auto; }
+
+/* ------------------- COMPROMISSOS ------------------- */
+.commitments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.commitment-card { text-align: center; padding: 20px; }
+.commitment-card .icon { font-size: 3em; color: var(--cor-primaria); margin-bottom: 15px; }
+.commitment-card h3 { font-size: 1.3em; margin-bottom: 10px; }
+.commitment-card p { font-size: 0.9em; color: var(--cor-texto-secundario); }
+
+/* ------------------- DESTAQUES DO MÊS (CARROSSEL) ------------------- */
+.featured-slider-container { position: relative; }
+.swiper { width: 100%; padding-bottom: 60px; }
+.swiper-slide { display: flex; justify-content: center; }
+.featured-card { background-color: var(--cor-branco); border-radius: 12px; box-shadow: var(--sombra-suave); overflow: hidden; transition: all 0.3s ease; max-width: 350px; }
+.featured-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+.featured-card img { width: 100%; height: 240px; object-fit: cover; }
+.featured-card-details { padding: 25px; text-align: center; }
+.featured-card-details h3 { font-size: 1.4em; margin-bottom: 10px; }
+.featured-card-details p { color: var(--cor-texto-secundario); margin-bottom: 25px; }
+.swiper-button-next, .swiper-button-prev { color: var(--cor-primaria); background-color: rgba(255, 255, 255, 0.8); border-radius: 50%; width: 44px; height: 44px; top: 45%; }
+.swiper-button-next:after, .swiper-button-prev:after { font-size: 20px; font-weight: bold; }
+.swiper-pagination-bullet-active { background-color: var(--cor-primaria); }
+
+/* ------------------- PRODUTOS ------------------- */
+.products { background-color: var(--cor-secundaria); }
+.product-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.product-item { background-color: white; border-radius: 12px; box-shadow: var(--sombra-suave); text-align: center; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
+.product-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.product-item img { width: 100%; height: 220px; object-fit: cover; }
+.product-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.product-content h3 { font-size: 1.1em; margin-bottom: 10px; color: var(--cor-texto-principal); min-height: 44px; }
+.product-content p { font-size: 1.1em; font-weight: 600; color: var(--cor-texto-principal); margin-bottom: 20px; }
+.product-content button { background-color: var(--cor-primaria); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: background-color 0.3s; align-self: center; }
+.product-content button:hover { background-color: var(--cor-primaria-hover); }
+
+/* ------------------- CTA (CALL TO ACTION) ------------------- */
+.cta { background-color: var(--cor-primaria); color: var(--cor-branco); text-align: center; }
+.cta h2 { color: var(--cor-branco); }
+.cta p { color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; }
+.btn-secondary { background-color: var(--cor-branco); color: var(--cor-primaria); text-decoration: none; padding: 15px 35px; border-radius: 30px; font-weight: 600; transition: all 0.3s ease; }
+.btn-secondary:hover { background-color: var(--cor-secundaria); color: var(--cor-primaria); transform: translateY(-3px); }
+
+/* ------------------- RODAPÉ ------------------- */
+.site-footer { background-color: #333; color: #ccc; padding: 40px 0; font-size: 0.9em; }
+.footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 30px; }
+.footer-section { flex: 1; min-width: 220px; }
+.footer-logo { max-width: 140px; margin-bottom: 15px; filter: grayscale(100%) brightness(200%); }
+.footer-section h4 { color: #fff; margin-bottom: 15px; border-bottom: 1px solid #555; padding-bottom: 10px; }
+.footer-section p { line-height: 1.6; color: #ccc; }
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section ul li { margin-bottom: 10px; }
+.footer-section ul li a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+.footer-section ul li a:hover { color: var(--cor-branco); }
+.footer-section .bi { margin-right: 8px; color: var(--cor-primaria); }
+.footer-section.social a { color: #ccc; margin-right: 15px; font-size: 1.5em; transition: color 0.3s ease; }
+.footer-section.social a:hover { color: var(--cor-primaria); }
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #555; color: #888; }
+.btn-admin { display: inline-block; margin-top: 15px; padding: 6px 12px; font-size: 0.8em; color: #ccc; background-color: #555; border-radius: 5px; text-decoration: none; transition: background-color 0.3s; }
+.btn-admin:hover { background-color: var(--cor-primaria); color: var(--cor-branco); }
+
+/* ------------------- RESPONSIVIDADE ------------------- */
+@media screen and (max-width: 900px) {
+    .menu-desktop { display: none; }
+    .btn-abrir-menu { display: block; font-size: 1.8em; color: var(--cor-texto-principal); border: none; background: none; cursor: pointer; }
+    .menu-movel { display: block; position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background-color: var(--cor-branco); box-shadow: -5px 0 15px rgba(0,0,0,0.1); z-index: 2000; transition: right 0.4s ease-in-out; padding: 40px 20px; }
+    .menu-movel.abrir-menu { right: 0; }
+    .menu-movel .btn-fechar { position: absolute; top: 20px; right: 20px; font-size: 1.8em; color: var(--cor-texto-secundario); }
+    .menu-movel nav ul { list-style: none; text-align: right; display: flex; flex-direction: column; gap: 25px; }
+    .menu-movel nav ul li a { color: var(--cor-texto-secundario); text-decoration: none; font-size: 1.2em; font-weight: 600; }
+    .menu-movel nav ul li a:hover { color: var(--cor-primaria); }
+    .overlay-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0,0,0,0.5); z-index: 1500; }
+    .overlay-menu.ativo { display: block; }
+    .hero h1 { font-size: 2.5em; }
+    .hero p { font-size: 1em; }
+    .section-title { font-size: 1.8em; }
+    .footer-content { flex-direction: column; align-items: center; text-align: center; }
+    .footer-section { min-width: 100%; }
+    .footer-section h4 { display: inline-block; border-bottom: 1px solid #555; padding-bottom: 5px; margin-bottom: 15px; }
+    .footer-section.social { margin-top: 20px; }
+}
+
+@media screen and (max-width: 480px) {
+    .interface { padding: 0 5%; }
+    .commitments, .featured-products, .products, .cta { padding: 60px 0; }
+    .hero { padding: 80px 0; }
+    .hero h1 { font-size: 2em; }
+    .btn-primary, .btn-secondary { padding: 12px 28px; font-size: 0.9em; }
+    .swiper-button-next, .swiper-button-prev { display: none; }
+    .header-actions { gap: 8px; }
+    .language-switcher { gap: 2px; }
+    .language-switcher a { padding: 4px 8px; }
+}
+/* ============================================= */
+/* === CÓDIGO DE RESPONSIVIDADE UNIVERSAL === */
+/* ============================================= */
+
+/* Regra de Ouro: Imagens Flexíveis */
+/* Impede que imagens quebrem o layout em telas pequenas. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Base do Layout Fluido */
+/* A classe .interface controla a largura do conteúdo principal. */
+.interface {
+    width: 90%; /* Ocupa 90% da tela */
+    max-width: 1280px; /* Limite para telas muito grandes */
+    margin: 0 auto; /* Centraliza */
+}
+
+
+/* --- ESTILOS PADRÃO (MOBILE FIRST) --- */
+/* Como os elementos se comportam em telas pequenas (layout de coluna única) */
+
+/* Títulos das Seções */
+.section-title {
+    font-size: 2em; /* Tamanho bom para celular */
+    text-align: center;
+}
+
+.section-subtitle {
+    text-align: center;
+}
+
+/* Grids de Conteúdo (Compromissos, Produtos, etc.) */
+/* Por padrão, todos os grids serão uma coluna no celular. */
+.commitments-grid,
+.product-grid, /* Lembre-se que criamos esta classe no JS */
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 30px; /* Espaçamento entre os itens empilhados */
+}
+
+/* Garante que o header se ajuste bem no mobile */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Esconde o menu de desktop e mostra o botão "sanduíche" no celular */
+.menu-desktop {
+    display: none;
+}
+.btn-abrir-menu {
+    display: block;
+}
+
+
+/* --- TABLETS (Telas a partir de 768px de largura) --- */
+@media (min-width: 768px) {
+
+    /* Ajusta o tamanho dos títulos para telas maiores */
+    .section-title {
+        font-size: 2.5em;
+    }
+
+    /* O grid de "Nossos Compromissos" agora terá 3 colunas */
+    .commitments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* O grid de produtos terá 2 colunas no tablet */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    /* O rodapé se organiza em um grid de 2x2 */
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+
+/* --- DESKTOPS (Telas a partir de 1024px de largura) --- */
+@media (min-width: 1024px) {
+
+    /* Mostra o menu de desktop e esconde o botão "sanduíche" */
+    .menu-desktop {
+        display: block;
+    }
+    .btn-abrir-menu {
+        display: none;
+    }
+
+    /* Ajusta os títulos para telas grandes */
+    .section-title {
+        font-size: 3em;
+    }
+
+    /* O grid de produtos agora terá 3 colunas no desktop */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* O rodapé agora terá 4 colunas, uma para cada seção */
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Ajuste fino para a primeira seção do rodapé (com a logo) */
+    .footer-content .footer-section.about {
+        grid-column: span 1; /* Ocupa uma coluna */
+    }
+}
