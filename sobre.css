@@ -1,3 +1,6 @@
+/* ============================================= */
+/* VARIÁVEIS GLOBAIS (ROOT)             */
+/* ============================================= */
 :root {
     --cor-primaria: #28a745;
     --cor-primaria-hover: #218838;
@@ -10,6 +13,10 @@
     --border-radius-default: 12px;
 }
 
+
+/* ============================================= */
+/* ESTILOS DE BASE E RESETS            */
+/* ============================================= */
 * {
     margin: 0;
     padding: 0;
@@ -27,13 +34,25 @@ body {
     color: var(--cor-texto-principal);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* O .container é seu layout principal, o .interface era redundante */
 .container {
     width: 90%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-/* SELETOR DE IDIOMA FLUTUANTE */
+
+/* ============================================= */
+/* COMPONENTES INDIVIDUAIS             */
+/* ============================================= */
+
+/* --- Top Bar (Seleção de Idioma) --- */
 .top-bar {
     position: sticky;
     top: 0;
@@ -72,7 +91,8 @@ body {
     color: var(--cor-branco);
 }
 
-/* Cabeçalho Hero */
+
+/* --- Cabeçalho (Hero Section) --- */
 .about-header {
     background-color: var(--cor-fundo-alt);
     text-align: center;
@@ -81,19 +101,19 @@ body {
 
 .about-header .logo {
     max-width: 180px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto; /* Centraliza a logo */
     filter: grayscale(100%) brightness(40%);
 }
 
 .about-header h1 {
-    font-size: 3.5em;
+    font-size: 2.5em; /* Ajustado para melhor leitura no mobile */
     font-weight: 700;
     color: var(--cor-texto-principal);
     margin-bottom: 10px;
 }
 
 .about-header p {
-    font-size: 1.2em;
+    font-size: 1.1em; /* Ajustado para mobile */
     max-width: 700px;
     margin: 0 auto 30px auto;
     color: var(--cor-texto-secundario);
@@ -121,7 +141,8 @@ body {
     margin-right: 8px;
 }
 
-/* Estilos Gerais de Seção */
+
+/* --- Seções de Conteúdo --- */
 .content-section {
     padding: 80px 20px;
 }
@@ -146,26 +167,13 @@ body {
     background-color: var(--cor-fundo-alt);
 }
 
-/* Layout em Grid (Imagem + Texto) */
+
+/* --- Layout em Grid (Imagem + Texto) --- */
 .grid-layout {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 coluna por padrão (mobile) */
     gap: 50px;
     align-items: center;
-}
-
-@media (min-width: 768px) {
-    .grid-layout {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid-layout.reverse .grid-image {
-        order: 2;
-    }
-
-    .grid-layout.reverse .grid-content {
-        order: 1;
-    }
 }
 
 .grid-image img {
@@ -203,10 +211,11 @@ body {
     margin-top: 5px;
 }
 
-/* Missão */
+
+/* --- Missão (Cards) --- */
 .mission-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr; /* 1 coluna no mobile */
     gap: 30px;
 }
 
@@ -236,7 +245,8 @@ body {
     margin-bottom: 10px;
 }
 
-/* Equipe */
+
+/* --- Equipe --- */
 .team-container {
     display: flex;
     justify-content: center;
@@ -274,18 +284,7 @@ body {
     margin-bottom: 10px;
 }
 
-.team-member .social-links a {
-    color: var(--cor-texto-secundario);
-    margin: 0 5px;
-    font-size: 1.2em;
-    text-decoration: none;
-}
-
-.team-member .social-links a:hover {
-    color: var(--cor-primaria);
-}
-
-/* Tecnologias */
+/* --- Tecnologias --- */
 .tech-container {
     text-align: center;
     max-width: 800px;
@@ -309,28 +308,24 @@ body {
     transform: translateY(-2px);
 }
 
-/* Rodapé */
+
+/* --- Rodapé --- */
 .site-footer {
     background-color: #333;
     color: #ccc;
-    padding: 40px 0;
+    padding: 60px 0 40px 0;
     font-size: 14px;
-}
-
-.site-footer .container {
-    max-width: 1100px;
 }
 
 .site-footer .footer-content {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
+    flex-direction: column; /* Layout de coluna para mobile (padrão) */
+    gap: 40px;
 }
 
 .site-footer .footer-section {
     flex: 1;
-    min-width: 250px;
+    min-width: 220px;
 }
 
 .site-footer .footer-logo {
@@ -341,9 +336,9 @@ body {
 
 .site-footer h4 {
     color: white;
-    margin-bottom: 15px;
-    padding-bottom: 10px; /* Ajuste aqui */
-    border-bottom: 1px solid #555; /* Ajuste aqui */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #555;
 }
 
 .site-footer ul {
@@ -372,129 +367,49 @@ body {
 
 .site-footer .footer-bottom {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
     border-top: 1px solid #444;
-    padding-top: 20px;
+    padding-top: 30px;
 }
+
+
 /* ============================================= */
-/* === CÓDIGO DE RESPONSIVIDADE UNIVERSAL === */
+/* REGRAS DE RESPONSIVIDADE            */
 /* ============================================= */
 
-/* Regra de Ouro: Imagens Flexíveis */
-/* Impede que imagens quebrem o layout em telas pequenas. */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Base do Layout Fluido */
-/* A classe .interface controla a largura do conteúdo principal. */
-.interface {
-    width: 90%; /* Ocupa 90% da tela */
-    max-width: 1280px; /* Limite para telas muito grandes */
-    margin: 0 auto; /* Centraliza */
-}
-
-
-/* --- ESTILOS PADRÃO (MOBILE FIRST) --- */
-/* Como os elementos se comportam em telas pequenas (layout de coluna única) */
-
-/* Títulos das Seções */
-.section-title {
-    font-size: 2em; /* Tamanho bom para celular */
-    text-align: center;
-}
-
-.section-subtitle {
-    text-align: center;
-}
-
-/* Grids de Conteúdo (Compromissos, Produtos, etc.) */
-/* Por padrão, todos os grids serão uma coluna no celular. */
-.commitments-grid,
-.product-grid, /* Lembre-se que criamos esta classe no JS */
-.footer-content {
-    display: flex;
-    flex-direction: column; /* Empilha os itens verticalmente */
-    gap: 30px; /* Espaçamento entre os itens empilhados */
-}
-
-/* Garante que o header se ajuste bem no mobile */
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Esconde o menu de desktop e mostra o botão "sanduíche" no celular */
-.menu-desktop {
-    display: none;
-}
-.btn-abrir-menu {
-    display: block;
-}
-
-
-/* --- TABLETS (Telas a partir de 768px de largura) --- */
+/* --- TABLETS (Telas a partir de 768px) --- */
 @media (min-width: 768px) {
-
-    /* Ajusta o tamanho dos títulos para telas maiores */
-    .section-title {
-        font-size: 2.5em;
+    .about-header h1 {
+        font-size: 3.5em; /* Aumenta a fonte do título no tablet */
     }
 
-    /* O grid de "Nossos Compromissos" agora terá 3 colunas */
-    .commitments-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+    .grid-layout {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
     }
 
-    /* O grid de produtos terá 2 colunas no tablet */
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
+    .grid-layout.reverse .grid-image {
+        order: 2;
     }
 
-    /* O rodapé se organiza em um grid de 2x2 */
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+    .grid-layout.reverse .grid-content {
+        order: 1;
+    }
+
+    .mission-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid adaptável */
+    }
+
+    .site-footer .footer-content {
+        display: grid; /* Muda para grid no tablet */
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
         gap: 40px;
     }
 }
 
 
-/* --- DESKTOPS (Telas a partir de 1024px de largura) --- */
+/* --- DESKTOPS (Telas a partir de 1024px) --- */
 @media (min-width: 1024px) {
-
-    /* Mostra o menu de desktop e esconde o botão "sanduíche" */
-    .menu-desktop {
-        display: block;
-    }
-    .btn-abrir-menu {
-        display: none;
-    }
-
-    /* Ajusta os títulos para telas grandes */
-    .section-title {
-        font-size: 3em;
-    }
-
-    /* O grid de produtos agora terá 3 colunas no desktop */
-    .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    /* O rodapé agora terá 4 colunas, uma para cada seção */
-    .footer-content {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    /* Ajuste fino para a primeira seção do rodapé (com a logo) */
-    .footer-content .footer-section.about {
-        grid-column: span 1; /* Ocupa uma coluna */
+    .site-footer .footer-content {
+        grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop */
     }
 }
