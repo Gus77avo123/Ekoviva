@@ -1,67 +1,93 @@
 // --- SISTEMA DE TRADUÇÃO ---
 const translations = {
-    title: { pt: 'Finalizar Pagamento', en: 'Finalize Payment' },
+    headerTitle: { pt: 'Pagamento', en: 'Payment' },
+    title: { pt: 'Finalizar Pagamento', en: 'Checkout' },
+    
+    // Métodos
     methodPix: { pt: 'Pix', en: 'Pix' },
     methodCard: { pt: 'Cartão de Crédito', en: 'Credit Card' },
-    pixTitle: { pt: 'Pagamento com Pix', en: 'Payment with Pix' },
-    pixStep1: { pt: '1. Abra o aplicativo do seu banco e escolha a opção de pagar com Pix.', en: '1. Open your bank app and choose the option to pay with Pix.' },
-    pixStep2: { pt: '2. Escaneie o QR Code abaixo ou use o "Pix Copia e Cola".', en: '2. Scan the QR Code below or use the "Pix Copy & Paste".' },
+    
+    // Pix
+    pixTitle: { pt: 'Pagamento com Pix', en: 'Pay with Pix' },
+    pixStep1: { pt: '1. Abra o app do banco e escolha Pix.', en: '1. Open bank app and choose Pix.' },
+    pixStep2: { pt: '2. Escaneie ou use o "Pix Copia e Cola".', en: '2. Scan or use copy-paste.' },
     pixCopyBtn: { pt: 'Copiar', en: 'Copy' },
     pixCopiedBtn: { pt: 'Copiado!', en: 'Copied!' },
-    pixReceiptLabel: { pt: '3. Anexe o comprovante para agilizar a confirmação', en: '3. Attach the receipt to speed up confirmation' },
-    pixButton: { pt: 'Finalizar Pedido', en: 'Finalize Order' },
-    cardTitle: { pt: 'Pagamento com Cartão', en: 'Payment with Card' },
+    pixReceiptLabel: { pt: '3. Anexe o comprovante (obrigatório)', en: '3. Attach receipt (required)' },
+    pixButton: { pt: 'Confirmar Pedido (Pix)', en: 'Confirm Order (Pix)' },
+    
+    // Cartão
+    cardTitle: { pt: 'Pagamento com Cartão', en: 'Pay with Card' },
     cardNumLabel: { pt: 'Número do Cartão', en: 'Card Number' },
     cardNumPlaceholder: { pt: '0000 0000 0000 0000', en: '0000 0000 0000 0000' },
     cardNameLabel: { pt: 'Nome no Cartão', en: 'Name on Card' },
-    cardNamePlaceholder: { pt: 'Nome Completo', en: 'Full Name' },
-    cardExpLabel: { pt: 'Validade (MM/AA)', en: 'Expiry (MM/YY)' },
-    cardExpPlaceholder: { pt: '12/28', en: '12/28' },
-    cardCvvPlaceholder: { pt: '123', en: '123' },
+    cardNamePlaceholder: { pt: 'Como impresso no cartão', en: 'As printed on card' },
+    cardExpLabel: { pt: 'Validade', en: 'Expiry' },
     cardButton: { pt: 'Pagar com Cartão', en: 'Pay with Card' },
-    summaryTitle: { pt: 'Resumo do Pedido', en: 'Order Summary' },
+    
+    // Resumo
+    summaryTitle: { pt: 'Resumo', en: 'Summary' },
     couponLabel: { pt: 'Cupom de Desconto', en: 'Discount Coupon' },
-    couponPlaceholder: { pt: 'Digite seu cupom', en: 'Enter your coupon' },
+    couponPlaceholder: { pt: 'Código', en: 'Code' },
     couponBtn: { pt: 'Aplicar', en: 'Apply' },
     summarySubtotal: { pt: 'Subtotal', en: 'Subtotal' },
     summaryDiscount: { pt: 'Desconto', en: 'Discount' },
     summaryShipping: { pt: 'Frete', en: 'Shipping' },
     summaryTotal: { pt: 'Total', en: 'Total' },
-    alertLogin: { pt: "Você precisa estar logado para fazer o pagamento.", en: "You must be logged in to proceed to payment." },
-    alertEmptyCart: { pt: "Seu carrinho está vazio.", en: "Your cart is empty." },
-    alertSuccess: { pt: "Pagamento confirmado com sucesso!\nObrigado por comprar na eKoviva!", en: "Payment confirmed successfully!\nThank you for shopping at eKoviva!" },
-    couponSuccess: { pt: 'Cupom de primeira compra aplicado com sucesso!', en: 'First purchase coupon applied successfully!' },
-    couponError: { pt: 'Cupom inválido ou expirado.', en: 'Invalid or expired coupon.' },
-    couponNotFirstPurchase: { pt: 'Este cupom é válido apenas para a primeira compra.', en: 'This coupon is valid for the first purchase only.' } // MENSAGEM NOVA
+    
+    // Mensagens
+    alertLogin: { pt: "Faça login para continuar.", en: "Please log in." },
+    alertEmptyCart: { pt: "Carrinho vazio.", en: "Cart is empty." },
+    alertSuccess: { pt: "Pedido realizado com sucesso!", en: "Order placed successfully!" },
+    alertProcessing: { pt: 'Processando...', en: 'Processing...' },
+    couponSuccess: { pt: 'Cupom aplicado!', en: 'Coupon applied!' },
+    couponError: { pt: 'Cupom inválido.', en: 'Invalid coupon.' },
+    couponNotFirst: { pt: 'Válido apenas na 1ª compra.', en: 'Valid for 1st purchase only.' },
+    fillCard: { pt: 'Preencha os dados do cartão.', en: 'Fill in card details.' },
+    fillReceipt: { pt: 'Anexe o comprovante Pix.', en: 'Attach Pix receipt.' },
+    
+    // Footer
+    footerNav: { pt: 'Navegação', en: 'Navigation' },
+    footerAbout: { pt: 'Sobre o Projeto', en: 'About the Project' },
+    footerProducts: { pt: 'Produtos', en: 'Products' },
+    footerRegister: { pt: 'Cadastro', en: 'Register' },
+    footerContact: { pt: 'Contato', en: 'Contact' },
+    footerSocial: { pt: 'Siga-nos', en: 'Follow us' },
+    footerRights: { pt: '© 2025 eKoviva.', en: '© 2025 eKoviva.' },
+    footerPrivacy: { pt: 'Privacidade e LGPD.', en: 'Privacy & GDPR.' },
+    footerAdmin: { pt: 'Gerenciar Dados', en: 'Manage Data' },
+    footerDesc: { pt: 'Um projeto de estudantes de ADS.', en: 'An ADS student project.' }
 };
 
 let currentLang = localStorage.getItem('language') || 'pt';
-let discount = 0; // Variável para armazenar o desconto
+let discount = 0;
+
+// --- TOASTS ---
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = type === 'success' ? `<i class="bi bi-check-circle-fill"></i> ${message}` : `<i class="bi bi-exclamation-circle-fill"></i> ${message}`;
+    container.appendChild(toast);
+    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
+}
 
 const setLanguage = (lang) => {
     currentLang = lang;
     localStorage.setItem('language', lang);
     document.querySelectorAll('[data-lang-key]').forEach(elem => {
         const key = elem.getAttribute('data-lang-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.innerHTML = translations[key][lang];
-        }
+        if (translations[key] && translations[key][lang]) elem.innerText = translations[key][lang];
     });
     document.querySelectorAll('[data-placeholder-key]').forEach(elem => {
         const key = elem.getAttribute('data-placeholder-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.placeholder = translations[key][lang];
-        }
+        if (translations[key]) elem.placeholder = translations[key][lang];
     });
-    languageLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-lang') === lang) link.classList.add('active');
-    });
-    renderSummary();
+    document.querySelectorAll('.lang-link').forEach(l => l.classList.toggle('active', l.getAttribute('data-lang') === lang));
+    loadOrderSummary();
 };
 
-const languageLinks = document.querySelectorAll('.lang-link');
-languageLinks.forEach(link => {
+document.querySelectorAll('.lang-link').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         setLanguage(link.getAttribute('data-lang'));
@@ -69,141 +95,201 @@ languageLinks.forEach(link => {
 });
 
 const clienteLogado = JSON.parse(localStorage.getItem("clienteLogado"));
-const cart = JSON.parse(localStorage.getItem('cart')) || [];
-const userCart = clienteLogado ? cart.filter(item => item.cliente === clienteLogado.email) : [];
 
 function formatCurrency(amount) {
-    const locale = currentLang === 'pt' ? 'pt-BR' : 'en-US';
-    return amount.toLocaleString(locale, { style: 'currency', currency: 'BRL' });
+    return Number(amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
-function renderSummary() {
+// --- MÁSCARAS DE INPUT (MELHORIA VISUAL) ---
+function setupMasks() {
+    const cardNum = document.getElementById('card-number');
+    const cardExp = document.getElementById('card-expiry');
+    const cardCvv = document.getElementById('card-cvv');
+
+    if (cardNum) {
+        cardNum.addEventListener('input', e => {
+            let v = e.target.value.replace(/\D/g, '');
+            v = v.replace(/(\d{4})/g, '$1 ').trim();
+            e.target.value = v.substring(0, 19);
+        });
+    }
+    if (cardExp) {
+        cardExp.addEventListener('input', e => {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2, 4);
+            e.target.value = v.substring(0, 5);
+        });
+    }
+    if (cardCvv) {
+        cardCvv.addEventListener('input', e => {
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
+        });
+    }
+}
+
+async function loadOrderSummary() {
     const summaryItemsEl = document.getElementById('summary-items');
-    summaryItemsEl.innerHTML = '';
-    let subtotal = userCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    
-    const discountValue = subtotal * discount;
-    const subtotalWithDiscount = subtotal - discountValue;
-    const freight = subtotalWithDiscount * 0.05;
-    const total = subtotalWithDiscount + freight;
+    if (!clienteLogado) return;
 
-    userCart.forEach(item => {
-        const productName = (item.name && item.name[currentLang]) ? item.name[currentLang] : item.name;
-        summaryItemsEl.innerHTML += `<div class="summary-item"><p>${item.quantity}x ${productName}</p><p>${formatCurrency(item.price * item.quantity)}</p></div>`;
-    });
+    try {
+        const response = await fetch(`http://localhost:3000/carrinho/${clienteLogado.id}`);
+        const userCart = await response.json();
 
-    document.getElementById('summary-subtotal').textContent = formatCurrency(subtotal);
-    document.getElementById('summary-freight').textContent = formatCurrency(freight);
-    document.getElementById('summary-total').textContent = formatCurrency(total);
+        summaryItemsEl.innerHTML = '';
+        let subtotal = 0;
 
-    const discountLine = document.getElementById('discount-line');
-    if (discount > 0) {
-        document.getElementById('summary-discount').textContent = `- ${formatCurrency(discountValue)}`;
-        discountLine.style.display = 'flex';
-    } else {
-        discountLine.style.display = 'none';
-    }
+        userCart.forEach(item => {
+            if(item.Produto) {
+                subtotal += item.Produto.preco * item.quantidade;
+                const div = document.createElement('div');
+                div.className = 'summary-item';
+                div.style.fontSize = '0.9em';
+                div.innerHTML = `<p>${item.quantidade}x ${item.Produto.nome}</p><p>${formatCurrency(item.Produto.preco * item.quantidade)}</p>`;
+                summaryItemsEl.appendChild(div);
+            }
+        });
+
+        const discountValue = subtotal * discount;
+        const subtotalWithDiscount = subtotal - discountValue;
+        const freight = subtotalWithDiscount * 0.05;
+        const total = subtotalWithDiscount + freight;
+
+        document.getElementById('summary-subtotal').textContent = formatCurrency(subtotal);
+        document.getElementById('summary-freight').textContent = formatCurrency(freight);
+        document.getElementById('summary-total').textContent = formatCurrency(total);
+
+        const discountLine = document.getElementById('discount-line');
+        if (discount > 0) {
+            document.getElementById('summary-discount').textContent = `- ${formatCurrency(discountValue)}`;
+            discountLine.style.display = 'flex';
+        } else {
+            discountLine.style.display = 'none';
+        }
+    } catch (err) { console.error(err); }
 }
 
-// --- LÓGICA DO CUPOM ATUALIZADA ---
-function applyCoupon() {
+async function applyCoupon() {
     const couponInput = document.getElementById('coupon-code');
-    const couponMessage = document.getElementById('coupon-message');
-    const validCouponCode = "EKOVIVA"; // Novo código do cupom
+    const msg = document.getElementById('coupon-message');
+    const code = couponInput.value.toUpperCase();
 
-    // 1. Verifica se o código digitado é "EKOVIVA"
-    if (couponInput.value.toUpperCase() !== validCouponCode) {
-        couponMessage.textContent = translations.couponError[currentLang];
-        couponMessage.className = 'error';
-        return; // Para a execução se o código estiver errado
+    if (code !== "EKOVIVA10") {
+        msg.textContent = translations.couponError[currentLang];
+        msg.className = 'error'; discount = 0; loadOrderSummary(); return;
     }
 
-    // 2. Verifica se é a primeira compra do cliente
-    const historicoCompras = JSON.parse(localStorage.getItem("historicoCompras")) || [];
-    // O método '.some' verifica se existe ALGUM item no histórico que pertence ao cliente logado
-    const userHasHistory = historicoCompras.some(item => item.cliente === clienteLogado.email);
+    try {
+        const response = await fetch(`http://localhost:3000/pedidos?usuario_id=${clienteLogado.id}`);
+        const pedidos = await response.json();
 
-    if (userHasHistory) {
-        // Se o cliente já tem compras, exibe a mensagem de erro específica
-        couponMessage.textContent = translations.couponNotFirstPurchase[currentLang];
-        couponMessage.className = 'error';
-    } else {
-        // Se o código está certo E o cliente não tem histórico, aplica o desconto
-        discount = 0.10; // 10%
-        couponMessage.textContent = translations.couponSuccess[currentLang];
-        couponMessage.className = 'success';
-        couponInput.disabled = true;
-        document.getElementById('apply-coupon-btn').disabled = true;
-        renderSummary(); // Atualiza o resumo para mostrar o desconto
-    }
+        if (pedidos.length > 0) {
+            msg.textContent = translations.couponNotFirst[currentLang];
+            msg.className = 'error'; discount = 0;
+        } else {
+            discount = 0.10;
+            msg.textContent = translations.couponSuccess[currentLang];
+            msg.className = 'success';
+            couponInput.disabled = true;
+            document.getElementById('apply-coupon-btn').disabled = true;
+        }
+        loadOrderSummary();
+    } catch (err) { console.error(err); }
 }
 
-
-// --- LÓGICA DO PIX 'COPIA E COLA' ---
 function copyPixCode() {
-    const pixCodeInput = document.getElementById('pix-code');
-    const copyBtn = document.getElementById('copy-pix-btn');
-    navigator.clipboard.writeText(pixCodeInput.value).then(() => {
-        copyBtn.innerHTML = `<i class="bi bi-check-lg"></i> <span>${translations.pixCopiedBtn[currentLang]}</span>`;
-        setTimeout(() => {
-            copyBtn.innerHTML = `<i class="bi bi-clipboard"></i> <span>${translations.pixCopyBtn[currentLang]}</span>`;
-        }, 2000);
+    const input = document.getElementById('pix-code');
+    navigator.clipboard.writeText(input.value).then(() => {
+        showToast(translations.pixCopiedBtn[currentLang], 'success');
     });
+}
+
+async function processPayment(e) {
+    e.preventDefault();
+    
+    // Validação Básica
+    const formId = e.target.id;
+    if (formId === 'credit') {
+        const num = document.getElementById('card-number').value;
+        const name = document.getElementById('card-name').value;
+        const exp = document.getElementById('card-expiry').value;
+        const cvv = document.getElementById('card-cvv').value;
+        if (!num || !name || !exp || !cvv) {
+            showToast(translations.fillCard[currentLang], 'error'); return;
+        }
+    } else if (formId === 'pix') {
+        const file = document.getElementById('pix-receipt').files[0];
+        if (!file) {
+            showToast(translations.fillReceipt[currentLang], 'error'); return;
+        }
+    }
+
+    showToast(translations.alertProcessing[currentLang], 'info');
+
+    try {
+        const cartResponse = await fetch(`http://localhost:3000/carrinho/${clienteLogado.id}`);
+        const userCart = await cartResponse.json();
+
+        if (userCart.length === 0) {
+            showToast(translations.alertEmptyCart[currentLang], 'error'); return;
+        }
+
+        const subtotal = userCart.reduce((sum, item) => sum + item.Produto.preco * item.quantidade, 0);
+        const total = (subtotal * (1 - discount)) * 1.05;
+
+        const itensPedido = userCart.map(item => ({
+            produto_id: item.produto_id, quantidade: item.quantidade, preco_unit: item.Produto.preco
+        }));
+
+        const pedidoResponse = await fetch('http://localhost:3000/pedidos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                usuario_id: clienteLogado.id, total: total, itens: itensPedido, status: "Pago"
+            })
+        });
+
+        if (!pedidoResponse.ok) throw new Error();
+
+        for (const item of userCart) {
+            await fetch(`http://localhost:3000/carrinho/${item.id}`, { method: 'DELETE' });
+        }
+
+        showToast(translations.alertSuccess[currentLang], 'success');
+        setTimeout(() => window.location.href = "perfil.html", 2000);
+
+    } catch (err) {
+        showToast('Erro ao processar.', 'error');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!clienteLogado) {
+    if (!clienteLogado || !clienteLogado.id) {
         alert(translations.alertLogin[currentLang]);
         window.location.href = "entrar.html";
         return;
     }
-    if (userCart.length === 0) {
-        alert(translations.alertEmptyCart[currentLang]);
-        window.location.href = "carrinho.html";
-        return;
-    }
-    
     setLanguage(currentLang);
+    loadOrderSummary();
+    setupMasks();
 
-    const methodButtons = document.querySelectorAll('.method-btn');
-    const paymentForms = document.querySelectorAll('.payment-form');
-    methodButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            methodButtons.forEach(btn => btn.classList.remove('active'));
-            paymentForms.forEach(form => form.classList.remove('active'));
-            button.classList.add('active');
-            document.getElementById(button.dataset.method).classList.add('active');
+    const methodBtns = document.querySelectorAll('.method-btn');
+    const forms = document.querySelectorAll('.payment-form');
+
+    methodBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            methodBtns.forEach(b => b.classList.remove('active'));
+            forms.forEach(f => f.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.method).classList.add('active');
         });
     });
 
-    document.getElementById('apply-coupon-btn').addEventListener('click', applyCoupon);
-    document.getElementById('copy-pix-btn').addEventListener('click', copyPixCode);
+    const btnCupom = document.getElementById('apply-coupon-btn');
+    if(btnCupom) btnCupom.addEventListener('click', applyCoupon);
 
-    paymentForms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let historicoCompras = JSON.parse(localStorage.getItem("historicoCompras")) || [];
-            
-            // Calcula o subtotal e o desconto antes de salvar
-            const subtotal = userCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-            const discountValue = subtotal * discount;
-            
-            const novosItensComprados = userCart.map(item => ({
-                ...item,
-                dataCompra: new Date().toLocaleDateString(currentLang === 'pt' ? 'pt-BR' : 'en-CA'),
-                status: 'Pagamento Aprovado',
-                codigoRastreio: 'EKV' + Date.now() + Math.floor(Math.random() * 100),
-                descontoAplicado: discountValue > 0 ? discountValue : 0 // Salva o valor do desconto no histórico
-            }));
-            
-            historicoCompras = historicoCompras.concat(novosItensComprados);
-            localStorage.setItem("historicoCompras", JSON.stringify(historicoCompras));
+    const btnPix = document.getElementById('copy-pix-btn');
+    if(btnPix) btnPix.addEventListener('click', copyPixCode);
 
-            const otherUsersCart = cart.filter(item => item.cliente !== clienteLogado.email);
-            localStorage.setItem("cart", JSON.stringify(otherUsersCart));
-
-            alert(translations.alertSuccess[currentLang]);
-            window.location.href = "perfil.html";
-        });
-    });
+    document.getElementById('pix').addEventListener('submit', processPayment);
+    document.getElementById('credit').addEventListener('submit', processPayment);
 });

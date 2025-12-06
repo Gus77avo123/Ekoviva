@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - eKoviva</title>
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+  <div id="overlay-menu" class="overlay-menu"></div>
+
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+          <h2>eKoviva Admin</h2>
+          <button id="btn-close-sidebar" class="close-sidebar-btn"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <nav>
+        <button id="nav-dashboard" class="active"><i class="bi bi-speedometer2"></i> Dashboard</button>
+        <button id="nav-produtos"><i class="bi bi-box-seam"></i> Produtos</button>
+        <button id="nav-usuarios"><i class="bi bi-people"></i> Usuários</button>
+        <button id="nav-pedidos"><i class="bi bi-receipt"></i> Pedidos</button>
+        <button id="btn-home" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <i class="bi bi-shop"></i> Ir para a Loja
+        </button>
+        <button id="btn-logout" class="danger"><i class="bi bi-box-arrow-right"></i> Sair</button>
+      </nav>
+    </aside>
+
+    <main class="main-area">
+      <header class="main-header">
+        <div class="header-left">
+            <button id="btn-open-sidebar" class="menu-btn"><i class="bi bi-list"></i></button>
+            <h1 id="page-title">Dashboard Financeiro</h1>
+        </div>
+        <div class="admin-info"><span id="admin-name">Administrador</span></div>
+      </header>
+
+      <section id="content">
+        <div id="dashboard-view" class="view">
+          <div class="cards">
+            <div class="card highlight-card">
+              <div class="card-icon"><i class="bi bi-cash-coin"></i></div>
+              <div class="card-info">
+                  <h3 id="info-faturamento">R$ 0,00</h3>
+                  <p>Faturamento Total</p>
+              </div>
+            </div>
+            <div class="card"><h3 id="info-ticket">R$ 0,00</h3><p>Ticket Médio</p></div>
+            <div class="card"><h3 id="count-pedidos">—</h3><p>Vendas</p></div>
+            <div class="card"><h3 id="count-produtos">—</h3><p>Produtos</p></div>
+            <div class="card"><h3 id="count-usuarios">—</h3><p>Clientes</p></div>
+          </div>
+          <div class="charts-area">
+            <div class="chart-card large"><h4>Faturamento</h4><canvas id="chart-revenue"></canvas></div>
+            <div class="chart-card"><h4>Estoque</h4><canvas id="chart-stock"></canvas></div>
+            <div class="chart-card"><h4>Usuários</h4><div class="chart-pie-container"><canvas id="chart-users"></canvas></div></div>
+          </div>
+        </div>
+
+        <div id="produtos-view" class="view" style="display:none">
+          <div class="toolbar">
+            <button id="btn-novo-produto" class="primary"><i class="bi bi-plus-circle"></i> Novo Produto</button>
+            <input id="search-produtos" placeholder="Buscar produto...">
+          </div>
+          <div class="table-responsive"><div id="produtos-list"></div></div>
+        </div>
+
+        <div id="usuarios-view" class="view" style="display:none">
+          <div class="toolbar">
+            <button id="btn-novo-usuario" class="primary"><i class="bi bi-person-plus"></i> Novo Usuário</button>
+            <input id="search-usuarios" placeholder="Buscar usuário...">
+          </div>
+          <div class="table-responsive"><div id="usuarios-list"></div></div>
+        </div>
+
+        <div id="pedidos-view" class="view" style="display:none">
+          <div class="table-responsive"><div id="pedidos-list"></div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal-produto" class="modal">
+    <div class="modal-content">
+      <h2 id="modal-produto-title">Novo Produto</h2>
+      <form id="form-produto" class="form-grid">
+        <input type="hidden" id="produto-id">
+        <div class="form-group"><label>Nome</label><input id="produto-nome" required></div>
+        <div class="form-group"><label>Descrição</label><textarea id="produto-desc" rows="3"></textarea></div>
+        <div class="form-two-columns">
+          <div class="form-group"><label>Preço</label><input id="produto-preco" type="number" step="0.01" required></div>
+          <div class="form-group"><label>Estoque</label><input id="produto-estoque" type="number" required></div>
+        </div>
+        <div class="form-group">
+          <label>Imagem</label>
+          <input id="produto-imagem-file" type="file" accept="image/*">
+          <img id="produto-preview" class="img-preview" style="display:none;">
+        </div>
+        <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px; display: flex; margin-top: 10px;">
+            <input type="checkbox" id="produto-destaque" style="width: 20px; height: 20px;">
+            <label for="produto-destaque" style="margin: 0; cursor: pointer;">Exibir em "Destaques do Mês"?</label>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="primary">Salvar</button>
+          <button type="button" id="btn-cancel-produto" class="danger">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-usuario" class="modal">
+    <div class="modal-content">
+      <h2 id="modal-usuario-title">Cadastrar Usuário</h2>
+      <form id="form-usuario" class="form-grid">
+        <input type="hidden" id="usuario-id"> 
+        <div class="form-group"><label>Nome</label><input id="usuario-nome" type="text" required></div>
+        <div class="form-two-columns">
+            <div class="form-group"><label>Email</label><input id="usuario-email" type="email" required></div>
+            <div class="form-group"><label>CPF</label><input id="usuario-cpf" type="text" maxlength="14" required></div>
+        </div>
+        <div class="form-two-columns">
+            <div class="form-group"><label>Senha</label><input id="usuario-senha" type="password"></div>
+            <div class="form-group"><label>Tipo</label><select id="usuario-tipo"><option value="1">Cliente</option><option value="0">Admin</option></select></div>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="primary">Salvar</button>
+          <button type="button" id="btn-cancel-usuario" class="danger">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-itens" class="modal">
+    <div class="modal-content modal-items" style="max-width: 700px;"> <h3>Itens do Pedido</h3>
+      
+      <div id="itens-container"></div>
+
+      <div class="modal-actions">
+          <button id="btn-fechar-itens" class="primary">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <script src="admin.js"></script>
+  <script>
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay-menu');
+      function toggleMenu() { sidebar.classList.toggle('active'); overlay.classList.toggle('active'); }
+      document.getElementById('btn-open-sidebar').onclick = toggleMenu;
+      document.getElementById('btn-close-sidebar').onclick = toggleMenu;
+      overlay.onclick = toggleMenu;
+  </script>
+</body>
+</html>

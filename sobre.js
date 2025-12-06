@@ -1,77 +1,337 @@
-// --- SISTEMA DE TRADUÇÃO ---
+/* ============================================================
+   SOBRE.JS — Versão Otimizada e Completa
+   eKoviva © 2025
+============================================================ */
+
+/* ============================================================
+   🔤 TRADUÇÕES (COMPLETAS)
+============================================================ */
 const translations = {
-    heroTitle: { pt: 'Conectando tecnologia e sustentabilidade.', en: 'Connecting technology and sustainability.' },
-    heroSubtitle: { pt: 'O eKoviva é mais que um e-commerce. É um projeto nascido em sala de aula, com o propósito de usar o conhecimento digital para promover um futuro mais verde e consciente.', en: 'eKoviva is more than an e-commerce. It is a project born in the classroom, with the purpose of using digital knowledge to promote a greener and more conscious future.' },
-    heroButton: { pt: '<i class="bi bi-shop"></i>Ir para a Loja', en: '<i class="bi bi-shop"></i>Go to Store' },
-    whyTitle: { pt: 'O Nosso Porquê: A Urgência da Mudança', en: 'Our Why: The Urgency for Change' },
-    whyDesc1: { pt: 'Vivemos um momento crítico. O consumo desenfreado e o descarte inadequado de produtos, especialmente os de plástico, geram um impacto devastador em nossos ecossistemas.', en: 'We live in a critical moment. Uncontrolled consumption and improper disposal of products, especially plastics, have a devastating impact on our ecosystems.' },
-    whyPoint1: { pt: '<strong>Poluição Plástica:</strong> Milhões de toneladas de plástico chegam aos oceanos anualmente, ameaçando a vida marinha.', en: '<strong>Plastic Pollution:</strong> Millions of tons of plastic enter the oceans annually, threatening marine life.' },
-    whyPoint2: { pt: '<strong>Emissões de Carbono:</strong> A produção em massa de itens descartáveis consome uma enorme quantidade de energia e recursos naturais.', en: '<strong>Carbon Emissions:</strong> Mass production of disposable items consumes a huge amount of energy and natural resources.' },
-    whyDesc2: { pt: 'Acreditamos que a mudança começa com pequenas escolhas. Ao optar por produtos ecológicos, você se torna parte da solução.', en: 'We believe that change begins with small choices. By opting for eco-friendly products, you become part of the solution.' },
-    missionTitle: { pt: 'Nossa Missão como Projeto', en: 'Our Mission as a Project' },
-    missionSubtitle: { pt: 'Como estudantes de Análise e Desenvolvimento de Sistemas, nossa missão é threefold:', en: 'As Systems Analysis and Development students, our mission is threefold:' },
-    mission1Title: { pt: 'Educar e Inspirar', en: 'Educate and Inspire' },
-    mission1Desc: { pt: 'Criar uma plataforma que não apenas vende, mas também informa sobre os benefícios e a importância de um estilo de vida sustentável.', en: 'Create a platform that not only sells but also informs about the benefits and importance of a sustainable lifestyle.' },
-    mission2Title: { pt: 'Aplicar o Conhecimento', en: 'Apply Knowledge' },
-    mission2Desc: { pt: 'Utilizar as habilidades de desenvolvimento web e gestão de projetos aprendidas em nosso curso para criar uma solução funcional e relevante.', en: 'Use the web development and project management skills learned in our course to create a functional and relevant solution.' },
-    mission3Title: { pt: 'Promover o Bem', en: 'Promote Good' },
-    mission3Desc: { pt: 'Fomentar uma comunidade engajada, conectando consumidores conscientes a produtos que fazem a diferença para o planeta.', en: 'Foster an engaged community, connecting conscious consumers with products that make a difference for the planet.' },
-    projectTitle: { pt: 'O Projeto Integrador', en: 'The Capstone Project' },
-    projectDesc1: { pt: 'O eKoviva é o nosso Projeto Integrador do curso de ADS. Ele representa a culminação de nosso aprendizado, unindo teoria e prática para resolver um problema do mundo real.', en: 'eKoviva is our Capstone Project for the Systems Analysis course. It represents the culmination of our learning, uniting theory and practice to solve a real-world problem.' },
-    projectDesc2: { pt: 'Neste projeto, somos responsáveis por todas as etapas: desde o planejamento e design da interface (UI/UX), passando pelo desenvolvimento front-end e back-end, até a gestão da base de dados e a implementação final. É a nossa oportunidade de mostrar como a tecnologia pode ser uma poderosa ferramenta para a transformação social e ambiental.', en: 'In this project, we are responsible for all stages: from planning and interface design (UI/UX), through front-end and back-end development, to database management and final implementation. It is our opportunity to show how technology can be a powerful tool for social and environmental transformation.' },
-    teamTitle: { pt: 'A Equipe por Trás do Código', en: 'The Team Behind the Code' },
-    teamSubtitle: { pt: 'Conheça os estudantes que deram vida a este projeto.', en: 'Meet the students who brought this project to life.' },
-    role1: { pt: 'Desenvolvedor Front-end', en: 'Front-end Developer' },
-    role2: { pt: 'Desenvolvedor Back-end', en: 'Back-end Developer' },
-    role3: { pt: 'Gerente de Projeto & DB Admin', en: 'Project Manager & DB Admin' },
-    role4: { pt: 'UI/UX Designer & QA', en: 'UI/UX Designer & QA' },
-    techTitle: { pt: 'Tecnologias Utilizadas', en: 'Technologies Used' },
-    techSubtitle: { pt: 'Este projeto foi construído com as mais modernas e eficientes tecnologias web.', en: 'This project was built with the most modern and efficient web technologies.' },
-    techBadgeResponsive: { pt: 'Design Responsivo', en: 'Responsive Design' },
-    footerDesc: { pt: 'Um projeto de estudantes de ADS para um mundo mais sustentável.', en: 'A project by Systems Analysis students for a more sustainable world.' },
-    footerLinks: { pt: 'Links Úteis', en: 'Useful Links' },
-    footerHome: { pt: 'Início', en: 'Home' },
-    footerContact: { pt: 'Contato', en: 'Contact' },
-    footerRegister: { pt: 'Cadastre-se', en: 'Sign Up' },
-    footerSocial: { pt: 'Siga-nos', en: 'Follow Us' },
-    footerRights: { pt: '© 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos reservados.', en: '© 2025 eKoviva - Academic Capstone Project. All rights reserved.' },
+  // Navegação
+  navProducts: { pt: 'Produtos', en: 'Products' },
+  navAbout: { pt: 'Sobre', en: 'About' },
+  navProductsMobile: { pt: 'Produtos', en: 'Products' },
+  navAboutMobile: { pt: 'Sobre', en: 'About' },
+
+  // Hero Section
+  heroTitle: { 
+    pt: 'Conectando tecnologia e um futuro verde.',
+    en: 'Connecting technology and a green future.' 
+  },
+  heroSubtitle: {
+    pt: 'O eKoviva é mais que um e-commerce — é um projeto que nasce da sala de aula para tornar o consumo mais consciente.',
+    en: 'eKoviva is more than an e-commerce — it is a project born in the classroom to make consumption more conscious.'
+  },
+  heroButton: { pt: 'Ir para a Loja', en: 'Go to Store' },
+
+  // Seção Porquê
+  whyTitle: { pt: 'O Nosso Porquê', en: 'Our Why' },
+  whyDesc1: { 
+    pt: 'Vivemos um momento crítico. O consumo desenfreado e o descarte inadequado de produtos geram impacto em nossos ecossistemas.',
+    en: 'We live in a critical moment. Unbridled consumption and improper disposal impact our ecosystems.' 
+  },
+
+  // Missão
+  missionTitle: { pt: 'Nossa Missão', en: 'Our Mission' },
+  missionSubtitle: { pt: 'Como estudantes de ADS, unimos tecnologia e propósito.', en: 'As ADS students, we unite technology and purpose.' },
+  mission1Title: { pt: 'Educar', en: 'Educate' },
+  mission1Desc: { pt: 'Plataforma que informa e incentiva práticas sustentáveis.', en: 'Platform that informs and encourages sustainable practices.' },
+  mission2Title: { pt: 'Inovar', en: 'Innovate' },
+  mission2Desc: { pt: 'Entrega de soluções reais com foco em impacto social.', en: 'Delivery of real solutions focused on social impact.' },
+  mission3Title: { pt: 'Cuidar', en: 'Care' },
+  mission3Desc: { pt: 'Fomentar comunidade consciente e engajada.', en: 'Foster a conscious and engaged community.' },
+
+  // Equipe
+  teamTitle: { pt: 'Quem Faz Acontecer', en: 'Who Makes It Happen' },
+  teamSubtitle: { pt: 'Conheça os estudantes que deram vida ao projeto.', en: 'Meet the students who brought the project to life.' },
+  role1: { pt: 'Front-end Dev', en: 'Front-end Dev' },
+  role2: { pt: 'Back-end Dev', en: 'Back-end Dev' },
+  role3: { pt: 'DB Admin', en: 'DB Admin' },
+  role4: { pt: 'Designer', en: 'Designer' },
+
+  // Tecnologias
+  techTitle: { pt: 'Tecnologias Utilizadas', en: 'Technologies Used' },
+  techSubtitle: { pt: 'Construído com tecnologias modernas e responsivas.', en: 'Built with modern and responsive technologies.' },
+
+  // Rodapé
+  footerDesc: { pt: 'Um projeto de estudantes de ADS para um mundo mais sustentável.', en: 'An ADS student project for a more sustainable world.' },
+  footerNav: { pt: 'Navegação', en: 'Navigation' },
+  footerAbout: { pt: 'Sobre o Projeto', en: 'About the Project' },
+  footerProducts: { pt: 'Produtos', en: 'Products' },
+  footerRegister: { pt: 'Cadastro', en: 'Register' },
+  footerContact: { pt: 'Contato', en: 'Contact' },
+  footerRights: { 
+    pt: '© 2025 eKoviva. Todos os direitos reservados.',
+    en: '© 2025 eKoviva. All rights reserved.' 
+  }
 };
 
-const languageLinks = document.querySelectorAll('.lang-link');
 let currentLang = localStorage.getItem('language') || 'pt';
 
-const setLanguage = (lang) => {
-    currentLang = lang;
-    localStorage.setItem('language', lang);
-    
-    document.querySelectorAll('[data-lang-key]').forEach(elem => {
-        const key = elem.getAttribute('data-lang-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.innerHTML = translations[key][lang];
-        }
-    });
+/* ============================================================
+   🌍 FUNÇÃO DE IDIOMA
+============================================================ */
+function setLanguage(lang) {
+  localStorage.setItem('language', lang);
 
-    languageLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-lang') === lang) {
-            link.classList.add('active');
-        }
+  document.querySelectorAll('[data-lang-key]').forEach(el => {
+    const key = el.getAttribute('data-lang-key');
+    if (translations[key]) {
+      el.textContent = translations[key][lang];
+    }
+  });
+
+  document.querySelectorAll('.lang-link').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+
+  document.title = lang === 'pt' ? "Sobre • eKoviva" : "About • eKoviva";
+}
+
+/* ============================================================
+   📱 MENU MOBILE
+============================================================ */
+function setupMenu() {
+  const btnOpen = document.getElementById('btn-menu-abrir');
+  const btnClose = document.getElementById('btn-menu-fechar');
+  const menu = document.getElementById('menu-movel');
+  const overlay = document.getElementById('overlay-menu');
+
+  if(btnOpen) {
+      btnOpen.addEventListener('click', () => {
+        menu.classList.add('abrir-menu');
+        overlay.classList.add('ativo');
+      });
+  }
+
+  if(btnClose) {
+      btnClose.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu');
+        overlay.classList.remove('ativo');
+      });
+  }
+
+  if(overlay) {
+      overlay.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu');
+        overlay.classList.remove('ativo');
+      });
+  }
+}
+
+/* ============================================================
+   🚀 INICIALIZAÇÃO
+============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  setLanguage(currentLang);
+
+  document.querySelectorAll('.lang-link').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const lang = btn.getAttribute('data-lang');
+      setLanguage(lang);
     });
+  });
+
+  setupMenu();
+  initChatbot();
+
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 800, once: true });
+  }
+});
+
+/* ============================================================
+   🤖 CHATBOT (EcoBot)
+============================================================ */
+
+const botData = {
+  recipes: [
+    {
+      id: 'sabao',
+      title: '🫧 Sabão Líquido Caseiro',
+      text: 'Rale 1 barra de sabão de coco e dissolva em 3L de água quente. Adicione 3 colheres de bicarbonato e 50ml de álcool. Aguarde 24h.'
+    },
+    {
+      id: 'esfoliante',
+      title: '🍯 Esfoliante de Café',
+      text: 'Misture 2 colheres de borra de café com 1 colher de óleo de coco. Use durante o banho para pele macia.'
+    },
+    {
+      id: 'amaciante',
+      title: '🌸 Amaciante Natural',
+      text: 'Misture 2 xícaras de água morna, 1 xícara de vinagre branco e 20 gotas de essência natural. Use 100ml por lavagem.'
+    },
+    {
+      id: 'desinfetante',
+      title: '🌿 Desinfetante Natural',
+      text: 'Infusione folhas de eucalipto em 1 litro de álcool por 3 dias. Misture com 1 litro de água e 1 colher de detergente neutro.'
+    },
+    {
+      id: 'spray-ar',
+      title: '🍃 Spray Aromático Natural',
+      text: 'Misture 200ml de água, 1 colher de álcool e 15 gotas de óleo essencial. Use como aromatizador.'
+    }
+  ],
+
+  tips: [
+    "🌱 Troque a escova de plástico por uma de bambu.",
+    "🛍️ Use sempre ecobags ao fazer compras.",
+    "💡 Substitua lâmpadas halógenas por LEDs.",
+    "🚲 Sempre que possível, escolha caminhar ou pedalar.",
+    "🔄 Reutilize potes de vidro para armazenamento.",
+    "🥤 Evite descartáveis — leve sua garrafa reutilizável.",
+    "🌿 Compre produtos de produtores locais.",
+    "♻️ Separe corretamente seu lixo reciclável."
+  ]
 };
 
-languageLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const selectedLang = link.getAttribute('data-lang');
-        setLanguage(selectedLang);
-    });
-});
+function initChatbot() {
+  const toggleBtn = document.getElementById('chatbot-toggle');
+  const closeBtn = document.getElementById('chatbot-close');
+  const windowChat = document.getElementById('chatbot-window');
+  const msgContainer = document.getElementById('chat-messages');
+  const optionsContainer = document.getElementById('chat-options');
+  const notificationDot = document.querySelector('.notification-dot');
 
-// Inicializa animações e idioma na carga da página
-AOS.init({
-    duration: 800,
-    once: true,
-    offset: 50
-});
+  if (!toggleBtn || !windowChat) return;
 
-setLanguage(currentLang);
+  let isChatOpen = false;
+  let hideTimeout = null;
+
+  /* --- Abrir / Fechar Chat --- */
+  function openChat() {
+    isChatOpen = true;
+    windowChat.classList.remove('chat-hidden');
+    if(notificationDot) notificationDot.style.display = 'none';
+
+    if (msgContainer.children.length === 0) {
+      setTimeout(() => addBotMessage("Olá! Sou o <b>EcoBot</b> 🌿. Pronto para te ajudar!"), 500);
+      setTimeout(showMainMenu, 800);
+    }
+  }
+
+  function closeChat() {
+    isChatOpen = false;
+    windowChat.classList.add('chat-hidden');
+  }
+
+  /* --- Auto-recolher ao mover o mouse --- */
+  windowChat.addEventListener('mouseleave', () => {
+    // Só agenda o fechamento se não estiver clicando dentro
+    hideTimeout = setTimeout(() => {
+      closeChat();
+    }, 2000); // Aumentei para 2s para dar tempo ao usuário
+  });
+
+  windowChat.addEventListener('mouseenter', () => {
+    if (hideTimeout) clearTimeout(hideTimeout);
+  });
+
+  toggleBtn.addEventListener('click', () => {
+    isChatOpen ? closeChat() : openChat();
+  });
+
+  if(closeBtn) closeBtn.addEventListener('click', closeChat);
+
+  /* --- Funções de Mensagem --- */
+  function scrollToBottom() {
+    msgContainer.scrollTop = msgContainer.scrollHeight;
+  }
+
+  function addBotMessage(text) {
+    const div = document.createElement('div');
+    div.className = 'bot-msg';
+    div.innerHTML = text;
+    msgContainer.appendChild(div);
+    scrollToBottom();
+  }
+
+  function addUserMessage(text) {
+    const div = document.createElement('div');
+    div.className = 'user-msg';
+    div.innerText = text;
+    msgContainer.appendChild(div);
+    scrollToBottom();
+  }
+
+  /* --- Menus e Opções --- */
+  function createOptionButton(label, value) {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn'; // Classe CSS definida no sobre.css
+      btn.innerText = label;
+      btn.dataset.opt = value;
+      return btn;
+  }
+
+  function showMainMenu() {
+    optionsContainer.innerHTML = '';
+    optionsContainer.appendChild(createOptionButton("🥣 Ver Receitas", "receitas"));
+    optionsContainer.appendChild(createOptionButton("💡 Dica Rápida", "dicas"));
+    optionsContainer.appendChild(createOptionButton("🛒 Sobre Produtos", "produtos"));
+  }
+
+  function showRecipesMenu() {
+      optionsContainer.innerHTML = '';
+      botData.recipes.forEach(recipe => {
+          // Usamos dataset para guardar o ID da receita
+          const btn = createOptionButton(recipe.title, `recipe-${recipe.id}`);
+          optionsContainer.appendChild(btn);
+      });
+      optionsContainer.appendChild(createOptionButton("⬅️ Voltar", "voltar"));
+  }
+
+  /* --- Manipulação de Cliques nas Opções --- */
+  optionsContainer.addEventListener('click', e => {
+    if (!e.target.classList.contains('option-btn')) return;
+
+    const opt = e.target.dataset.opt;
+
+    if (opt === "receitas") {
+      addUserMessage("Quero ver receitas sustentáveis.");
+      setTimeout(() => {
+          addBotMessage("Ótima escolha! Qual receita você gostaria de aprender?");
+          showRecipesMenu();
+      }, 500);
+    } 
+    
+    else if (opt.startsWith("recipe-")) {
+        const recipeId = opt.replace("recipe-", "");
+        const recipe = botData.recipes.find(r => r.id === recipeId);
+        
+        if (recipe) {
+            addUserMessage(recipe.title);
+            setTimeout(() => {
+                addBotMessage(`<b>${recipe.title}</b><br><br>${recipe.text}`);
+                // Volta ao menu de receitas após mostrar o detalhe
+                setTimeout(showRecipesMenu, 3000); 
+            }, 500);
+        }
+    }
+
+    else if (opt === "dicas") {
+      addUserMessage("Me dê uma dica rápida!");
+      const randomTip = botData.tips[Math.floor(Math.random() * botData.tips.length)];
+      setTimeout(() => {
+        addBotMessage(`💡 <b>Dica Eco:</b> ${randomTip}`);
+        setTimeout(showMainMenu, 2000);
+      }, 500);
+    } 
+    
+    else if (opt === "produtos") {
+        addUserMessage("Quero saber sobre os produtos.");
+        setTimeout(() => {
+            addBotMessage("Nossos produtos são 100% ecológicos! Você pode vê-los na aba <a href='index.html#products' style='color:#28a745; font-weight:bold;'>Produtos</a>.");
+            setTimeout(showMainMenu, 3000);
+        }, 500);
+    }
+
+    else if (opt === "voltar") {
+      addUserMessage("Voltar ao menu principal.");
+      setTimeout(() => {
+          addBotMessage("Como posso te ajudar agora? 🌿");
+          showMainMenu();
+      }, 500);
+    }
+  });
+}

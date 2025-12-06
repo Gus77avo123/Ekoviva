@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,47 +15,76 @@
 
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <header>
-        <div class="interface">
-            <div class="header-content">
-                <div class="logotipo">
-                    <a href="index.html"><img src="./imagem/logo2.png" alt="Logotipo eKoviva" /></a>
+    
+    <header class="header-bar">
+        <div class="header-container">
+            
+            <div class="header-left">
+                <a href="index.html" class="logo-link">
+                    <img src="./imagem/logo2.png" alt="Logotipo eKoviva" class="logo-img" />
+                </a>
+            </div>
+
+            <nav class="menu-desktop">
+                <ul>
+                    <li><a href="#products" data-lang-key="navProducts">Produtos</a></li>
+                    
+                    <a id="admin-link" href="admin.html" style="display: none;">Admin</a>
+                    
+                    <li><a href="sobre.html" target="_blank" data-lang-key="navAbout">Sobre</a></li>
+                    <li id="auth-menu-container"></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="language-switcher">
+                    <a href="#" class="lang-link active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-link" data-lang="en">EN</a>
                 </div>
                 
-                <nav class="menu-desktop">
-                    <ul>
-                        <li><a href="#products" data-lang-key="navProducts">Produtos</a></li>
-                        <li><a href="sobre.html" target="_blank" data-lang-key="navAbout">Sobre</a></li>
-                        <li id="auth-menu-container"></li>
-                    </ul>
-                </nav>
-
-                <div class="header-actions">
-                    <div class="language-switcher">
-                        <a href="#" class="lang-link active" data-lang="pt">PT</a>
-                        <a href="#" class="lang-link" data-lang="en">EN</a>
-                    </div>
-                    <div class="header-cart">
-                        <a href="carrinho.html" aria-label="Ver carrinho de compras">
-                            <i class="bi bi-cart3"></i>
-                            <span id="cart-item-count" class="cart-badge" style="display: none;">0</span>
-                        </a>
-                    </div>
-                    <button class="btn-abrir-menu" id="btn-menu-abrir" aria-label="Abrir menu">
-                        <i class="bi bi-list"></i>
-                    </button>
+                <div class="header-cart">
+                    <a href="carrinho.html" aria-label="Ver carrinho de compras">
+                        <i class="bi bi-cart3"></i>
+                        <span id="cart-item-count" class="cart-badge" style="display: none;">0</span>
+                    </a>
                 </div>
+
+                <button class="btn-abrir-menu" id="btn-menu-abrir" aria-label="Abrir menu">
+                    <i class="bi bi-list"></i>
+                </button>
             </div>
         </div>
     </header>
 
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
     <div class="menu-movel" id="menu-movel">
-        <button class="btn-fechar" id="btn-menu-fechar" aria-label="Fechar menu"><i class="bi bi-x-lg"></i></button>
+        <div class="menu-header">
+            <h3>MENU</h3>
+            <button class="btn-fechar" id="btn-menu-fechar" aria-label="Fechar menu">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
         <nav>
             <ul>
-                <li><a href="#products" data-lang-key="navProductsMobile">Produtos</a></li>
-                <li><a href="sobre.html" target="_blank" data-lang-key="navAboutMobile">Sobre</a></li>
+                <li><a href="#products" data-lang-key="navProductsMobile"><i class="bi bi-box-seam"></i> Produtos</a></li>
+                
+                <li id="admin-link-mobile" style="display: none;">
+                    <a href="admin.html"><i class="bi bi-gear-fill"></i> Admin</a>
+                </li>
+
+                <li><a href="sobre.html" target="_blank" data-lang-key="navAboutMobile"><i class="bi bi-info-circle"></i> Sobre</a></li>
                 <li id="auth-menu-container-movel"></li>
             </ul>
         </nav>
@@ -65,30 +95,36 @@
         <section class="hero">
             <div class="interface">
                 <h1 data-aos="fade-up" data-lang-key="heroTitle">Pequenas Escolhas, Grande Impacto.</h1>
-                <p data-aos="fade-up" data-aos-delay="200" data-lang-key="heroSubtitle">Descubra produtos que cuidam de você e do planeta. Junte-se a nós na jornada por um futuro mais sustentável.</p>
-                <a href="#products" class="btn-primary" data-aos="fade-up" data-aos-delay="400" data-lang-key="heroButton">Ver Produtos</a>
+                <p data-aos="fade-up" data-aos-delay="200" data-lang-key="heroSubtitle">Descubra produtos que cuidam de
+                    você e do planeta. Junte-se a nós na jornada por um futuro mais sustentável.</p>
+                <a href="#products" class="btn-primary" data-aos="fade-up" data-aos-delay="400"
+                    data-lang-key="heroButton">Ver Produtos</a>
             </div>
         </section>
 
         <section class="commitments">
             <div class="interface">
                 <h2 class="section-title" data-lang-key="commitmentsTitle">Nossos Compromissos</h2>
-                <p class="section-subtitle" data-lang-key="commitmentsSubtitle">O eKoviva é um projeto acadêmico guiado por princípios que unem tecnologia, educação e sustentabilidade.</p>
+                <p class="section-subtitle" data-lang-key="commitmentsSubtitle">O eKoviva é um projeto acadêmico guiado
+                    por princípios que unem tecnologia, educação e sustentabilidade.</p>
                 <div class="commitments-grid">
                     <div class="commitment-card" data-aos="fade-up">
                         <i class="bi bi-tree icon"></i>
                         <h3 data-lang-key="commitment1Title">100% Sustentável</h3>
-                        <p data-lang-key="commitment1Desc">Selecionamos produtos de fontes responsáveis, com materiais reciclados ou biodegradáveis.</p>
+                        <p data-lang-key="commitment1Desc">Selecionamos produtos de fontes responsáveis, com materiais
+                            reciclados ou biodegradáveis.</p>
                     </div>
                     <div class="commitment-card" data-aos="fade-up" data-aos-delay="200">
                         <i class="bi bi-people icon"></i>
                         <h3 data-lang-key="commitment2Title">Apoio Local</h3>
-                        <p data-lang-key="commitment2Desc">Valorizamos e apoiamos pequenos produtores e artesãos que compartilham da nossa visão.</p>
+                        <p data-lang-key="commitment2Desc">Valorizamos e apoiamos pequenos produtores e artesãos que
+                            compartilham da nossa visão.</p>
                     </div>
                     <div class="commitment-card" data-aos="fade-up" data-aos-delay="400">
                         <i class="bi bi-lightbulb icon"></i>
                         <h3 data-lang-key="commitment3Title">Propósito Educacional</h3>
-                        <p data-lang-key="commitment3Desc">Aplicamos nosso conhecimento de ADS para criar uma plataforma que inspira a mudança.</p>
+                        <p data-lang-key="commitment3Desc">Aplicamos nosso conhecimento de ADS para criar uma plataforma
+                            que inspira a mudança.</p>
                     </div>
                 </div>
             </div>
@@ -97,12 +133,12 @@
         <section class="featured-products">
             <div class="interface">
                 <h2 class="section-title" data-lang-key="featuredTitle">Destaques do Mês</h2>
-                <p class="section-subtitle" data-lang-key="featuredSubtitle">Nossos produtos mais amados, escolhidos para inspirar sua jornada.</p>
-                
+                <p class="section-subtitle" data-lang-key="featuredSubtitle">Nossos produtos mais amados, escolhidos
+                    para inspirar sua jornada.</p>
+
                 <div class="featured-slider-container">
                     <div class="swiper">
-                        <div class="swiper-wrapper">
-                            </div>
+                        <div class="swiper-wrapper" id="swiper-wrapper-destaques"></div>
                         <div class="swiper-pagination"></div>
                     </div>
                     <div class="swiper-button-prev"></div>
@@ -114,17 +150,19 @@
         <section id="products" class="products">
             <div class="interface">
                 <h2 class="section-title" data-lang-key="productsTitle">Nossa Seleção Sustentável</h2>
-                <p class="section-subtitle" data-lang-key="productsSubtitle">Produtos pensados para facilitar sua rotina e diminuir sua pegada ecológica.</p>
-                <div class="product-list">
-                    </div>
+                <p class="section-subtitle" data-lang-key="productsSubtitle">Produtos pensados para facilitar sua rotina
+                    e diminuir sua pegada ecológica.</p>
+                <div class="product-list" id="product-list-container"></div>
             </div>
         </section>
-        
+
         <section class="cta">
             <div class="interface">
                 <h2 data-aos="fade-up" data-lang-key="ctaTitle">Faça Parte da Mudança</h2>
-                <p data-aos="fade-up" data-aos-delay="200" data-lang-key="ctaSubtitle">Crie sua conta para acompanhar seus pedidos e fazer parte de uma comunidade que se importa.</p>
-                <a href="cadastro.html" class="btn-secondary" data-aos="fade-up" data-aos-delay="400" data-lang-key="ctaButton">Cadastre-se Agora</a>
+                <p data-aos="fade-up" data-aos-delay="200" data-lang-key="ctaSubtitle">Crie sua conta para acompanhar
+                    seus pedidos e fazer parte de uma comunidade que se importa.</p>
+                <a href="cadastro.html" class="btn-secondary" data-aos="fade-up" data-aos-delay="400"
+                    data-lang-key="ctaButton">Cadastre-se Agora</a>
             </div>
         </section>
 
@@ -154,29 +192,174 @@
                         <i class="bi bi-telephone-fill"></i> (11) 98765-4321
                     </p>
                 </div>
-            <div class="footer-section social">
-    <h4 data-lang-key="footerSocial">Siga-nos</h4>
-    
-    <a href="https://www.instagram.com/SEU_USUARIO_AQUI" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-    
-    <a href="https://www.facebook.com/SUA_PAGINA_AQUI" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-    
-    <a href="https://wa.me/5511999998888" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-</div>
+                <div class="footer-section social">
+                    <h4 data-lang-key="footerSocial">Siga-nos</h4>
+
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p data-lang-key="footerRights">&copy; 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos reservados.</p>
+                <p data-lang-key="footerRights">&copy; 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos
+                    reservados.</p>
                 <p style="font-size: 0.8em; margin-top: 10px; color: #aaa;" data-lang-key="footerLgpd">
-                    Este site respeita a sua privacidade. Estamos em conformidade com a Lei Geral de Proteção de Dados (LGPD). Para saber mais, acesse nossa <a href="politica-privacidade.html" target="_blank" style="color: #ccc; text-decoration: underline;">Política de Privacidade</a>.
+                    Este site respeita a sua privacidade. Estamos em conformidade com a Lei Geral de Proteção de Dados
+                    (LGPD). Para saber mais, acesse nossa <a href="politica-privacidade.html" target="_blank"
+                        style="color: #ccc; text-decoration: underline;">Política de Privacidade</a>.
                 </p>
-                <a href="bancodedados.html" class="btn-admin" target="_blank" data-lang-key="footerAdmin">Gerenciar Dados</a>
+                <a href="bancodedados.html" class="btn-admin" target="_blank" data-lang-key="footerAdmin">Gerenciar
+                    Dados</a>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    
+
     <script src="index.js"></script>
+
+    <div id="christmas-layer">
+        <div class="christmas-message">
+            <h2>Boas Festas! 🎄</h2>
+            <p>Que seu Natal seja tão verde e cheio de vida quanto as nossas escolhas.</p>
+            <small>— Equipe Ekoviva</small>
+        </div>
+        <div class="santa-fly"></div>
+        <div class="forest-decoration"></div>
+        <div id="snow-container"></div>
+    </div>
+
+    <script>
+        const apiBaseURL = "http://localhost:3000";
+
+        async function carregarDestaques() {
+            const swiperWrapper = document.getElementById('swiper-wrapper-destaques');
+            
+            try {
+                const response = await fetch(`${apiBaseURL}/produtos`);
+                const produtos = await response.json();
+
+                // Filtra apenas os que têm destaque == true
+                const destaques = produtos.filter(produto => produto.destaque === true);
+
+                if (destaques.length === 0) {
+                    swiperWrapper.innerHTML = '<p style="text-align:center; width:100%; padding:20px;">Nenhum destaque no momento.</p>';
+                    return;
+                }
+
+                swiperWrapper.innerHTML = ''; // Limpa
+
+                destaques.forEach(prod => {
+                    const precoFormatado = parseFloat(prod.preco).toFixed(2).replace('.', ',');
+                    
+                    // Aumentei o limite de caracteres para 110 para aparecer mais texto
+                    const descricaoTexto = prod.descricao ? prod.descricao.substring(0, 110) + '...' : 'Confira os detalhes deste produto incrível.';
+
+                    const slideHTML = `
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="img-container">
+                                    <img src="${apiBaseURL}/uploads/${prod.imagem}" alt="${prod.nome}">
+                                </div>
+                                <h3>${prod.nome}</h3>
+                                <p class="desc">${descricaoTexto}</p>
+                                <div class="price-action">
+                                    <span class="price">R$ ${precoFormatado}</span>
+                                    
+                                    <a href="#products" class="btn-shop">
+                                        Ver na Loja
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    swiperWrapper.innerHTML += slideHTML;
+                });
+
+                // Inicializa o Swiper depois de colocar os slides
+                new Swiper('.swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 }
+                    }
+                });
+
+            } catch (error) {
+                console.error("Erro ao carregar destaques:", error);
+                swiperWrapper.innerHTML = '<p>Erro ao carregar produtos.</p>';
+            }
+        }
+
+        async function carregarTodosProdutos() {
+            const container = document.querySelector('.product-list');
+            if(!container) return;
+
+            try {
+                const res = await fetch(`${apiBaseURL}/produtos`);
+                const produtos = await res.json();
+                
+                container.innerHTML = '';
+                produtos.forEach(prod => {
+                    const preco = parseFloat(prod.preco).toFixed(2).replace('.', ',');
+                    // Descrição curta para a lista geral
+                    const descCurta = prod.descricao ? prod.descricao.substring(0, 90) + '...' : '';
+
+                    container.innerHTML += `
+                        <div class="product-card" data-aos="fade-up">
+                             <img src="${apiBaseURL}/uploads/${prod.imagem}" alt="${prod.nome}">
+                             <h3>${prod.nome}</h3>
+                             <p class="product-description">${descCurta}</p>
+                             <p class="price">R$ ${preco}</p>
+                             <button onclick="adicionarAoCarrinho(${prod.id})" class="btn-shop">Adicionar ao Carrinho</button>
+                        </div>
+                    `;
+                });
+            } catch(e){ console.error(e); }
+        }
+
+        // Função de Adicionar ao Carrinho (Para a lista de baixo)
+        async function adicionarAoCarrinho(produtoId) {
+            const cliente = JSON.parse(localStorage.getItem("clienteLogado"));
+            if (!cliente) {
+                alert("Por favor, faça login para comprar.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            try {
+                const res = await fetch(`${apiBaseURL}/carrinho`, {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ usuario_id: cliente.id, produto_id: produtoId, quantidade: 1 })
+                });
+
+                if (res.ok) {
+                    alert("Produto adicionado ao carrinho!");
+                    // Atualiza contador se tiver função para isso
+                    if(window.atualizarContadorCarrinho) window.atualizarContadorCarrinho();
+                } else {
+                    alert("Erro ao adicionar.");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Erro de conexão.");
+            }
+        }
+
+        // Inicia
+        window.onload = function() {
+            AOS.init(); // Inicia animações
+            carregarDestaques(); // Carrega o carrossel (link ver na loja)
+            carregarTodosProdutos(); // Carrega a lista de baixo (botão comprar)
+        };
+    </script>
+    
 </body>
 </html>

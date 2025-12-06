@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // --- SISTEMA DE TRADUÇÃO ---
     const translations = {
-        // ... (traduções inalteradas) ...
         navProducts: { pt: 'Produtos', en: 'Products' },
         navAbout: { pt: 'Sobre', en: 'About' },
         navProductsMobile: { pt: 'Produtos', en: 'Products' },
@@ -87,22 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // --- PRODUTOS ---
-    const productList = [
-        { id: 'garrafa_agua', price: 45.00, image: './imagem/garrafa.jpg', name: { pt: 'Garrafa de Água Reutilizável', en: 'Reusable Water Bottle' } },
-        { id: 'escova_dente', price: 15.00, image: './imagem/Escova.png', name: { pt: 'Escova de Dente de Bambu', en: 'Bamboo Toothbrush' } },
-        { id: 'kit_talheres', price: 25.00, image: './imagem/Kit de Talheres de Bambu.jpg', name: { pt: 'Kit de Talheres de Bambu', en: 'Bamboo Cutlery Set' } },
-        { id: 'sabonete_natural', price: 12.00, image: './imagem/Sabonete Natural Artesanal.png', name: { pt: 'Sabonete Natural Artesanal', en: 'Handmade Natural Soap' } },
-        { id: 'copo_vidro', price: 35.00, image: './imagem/Copo de Vidro Reutilizável.png', name: { pt: 'Copo de Vidro Reutilizável', en: 'Reusable Glass Cup' } },
-        { id: 'bolsa_juta', price: 48.00, image: './imagem/Bolsa de Juta Sustentável.jpg', name: { pt: 'Bolsa de Juta Sustentável', en: 'Sustainable Jute Bag' } },
-        { id: 'shampoo_solido', price: 30.00, image: './imagem/Shampoo Sólido Natural.jpg', name: { pt: 'Shampoo Sólido Natural', en: 'Natural Solid Shampoo' } },
-        { id: 'prato_bambu', price: 18.00, image: './imagem/Prato de Bambu Biodegradável.jpg', name: { pt: 'Prato de Bambu Biodegradável', en: 'Biodegradable Bamboo Plate' } },
-        { id: 'pote_vidro', price: 22.00, image: './imagem/Pote de Vidro Reutilizavel.jpeg', name: { pt: 'Pote de Vidro Reutilizável', en: 'Reusable Glass Jar' } },
-        { id: 'guardanapo_pano', price: 38.00, image: './imagem/Guardanapo de Pano Reutilizável.jpg', name: { pt: 'Guardanapo de Pano (Kit)', en: 'Cloth Napkin (Set)' } },
-        { id: 'escova_cabelo', price: 28.00, image: './imagem/Escova de Cabelo de Bambu.png', name: { pt: 'Escova de Cabelo de Bambu', en: 'Bamboo Hairbrush' } },
-    ];
-    
-    // ... (o resto do seu código continua igual)
-    
     const featuredProductList = [
         { image: './imagem/sacola.png', alt: 'Sacola de Algodão Orgânico', titleKey: 'featuredProd1Title', descKey: 'featuredProd1Desc' },
         { image: './imagem/Copo de Vidro Reutilizável.png', alt: 'Copo de Vidro Reutilizável', titleKey: 'featuredProd2Title', descKey: 'featuredProd2Desc' },
@@ -113,26 +96,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const productContainer = document.querySelector('.product-list');
     const swiperWrapper = document.querySelector('.swiper-wrapper');
 
-    function populateProducts() {
+    async function populateProducts() {
         if (!productContainer) return;
         productContainer.innerHTML = '';
-        productList.forEach(product => {
-            const productItem = document.createElement('div');
-            productItem.className = 'product-item';
-            productItem.setAttribute('data-aos', 'fade-up');
-            
-            productItem.innerHTML = `
-                <img src="${product.image}" alt="${product.name[currentLang]}" />
-                <div class="product-content">
-                    <div>
-                        <h3>${product.name[currentLang]}</h3>
-                        <p>R$ ${product.price.toFixed(2).replace('.', ',')}</p>
+        try {
+            const response = await fetch('http://localhost:3000/produtos');
+            if (!response.ok) throw new Error('Erro ao buscar produtos');
+            const products = await response.json();
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.setAttribute('data-aos', 'fade-up');
+                
+                const name = currentLang === 'pt' ? product.nome : product.nome; 
+                const imageUrl = product.imagem ? `http://localhost:3000/uploads/${product.imagem}` : './imagem/default.png';
+                
+                productItem.innerHTML = `
+                    <img src="${imageUrl}" alt="${name}" />
+                    <div class="product-content">
+                        <div>
+                            <h3>${name}</h3>
+                            <p class="product-description">${product.descricao}</p>
+                            <p class="product-price">R$ ${product.preco.toFixed(2).replace('.', ',')}</p>
+                        </div>
+                        <button onclick="addToCart(this, ${product.id}, ${product.preco})">${translations.addToCart[currentLang]}</button>
                     </div>
-                    <button onclick="addToCart(this, '${product.id}', ${product.price})">${translations.addToCart[currentLang]}</button>
-                </div>
-            `;
-            productContainer.appendChild(productItem);
-        });
+                `;
+                productContainer.appendChild(productItem);
+            });
+        } catch (err) {
+            console.error('Erro ao popular produtos:', err);
+        }
     }
     
     function populateFeaturedProducts() {
@@ -186,17 +180,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const clienteLogado = JSON.parse(localStorage.getItem("clienteLogado"));
     
-    function updateCartIconCount() {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        let itemCount = 0;
-        if (clienteLogado && clienteLogado.email) {
-            const userCartItems = cart.filter(item => item.cliente === clienteLogado.email);
-            itemCount = userCartItems.reduce((sum, item) => sum + item.quantity, 0);
-        }
-        const cartBadge = document.getElementById("cart-item-count");
-        if (cartBadge) {
-            cartBadge.textContent = itemCount;
-            cartBadge.style.display = itemCount > 0 ? 'inline-block' : 'none';
+    async function updateCartIconCount() {
+        if (!clienteLogado || !clienteLogado.id) return;
+        try {
+            const response = await fetch(`http://localhost:3000/carrinho/${clienteLogado.id}`);
+            if (!response.ok) throw new Error('Erro ao buscar carrinho');
+            const cartItems = await response.json();
+            const itemCount = cartItems.reduce((sum, item) => sum + item.quantidade, 0);
+            const cartBadge = document.getElementById("cart-item-count");
+            if (cartBadge) {
+                cartBadge.textContent = itemCount;
+                cartBadge.style.display = itemCount > 0 ? 'inline-block' : 'none';
+            }
+        } catch (err) {
+            console.error('Erro ao atualizar contagem do carrinho:', err);
         }
     }
 
@@ -245,41 +242,128 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    window.addToCart = function(buttonElement, productId, price) {
-        if (!clienteLogado) {
+    window.addToCart = async function(buttonElement, productId, price) {
+        if (!clienteLogado || !clienteLogado.id) {
             alert(translations.alertLogin[currentLang]);
             window.location.href = "entrar.html";
             return;
         }
-        const product = productList.find(p => p.id === productId);
-        if (!product) return;
-
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        let productIndex = cart.findIndex(item => item.id === productId && item.cliente === clienteLogado.email);
-        
-        if (productIndex !== -1) {
-            cart[productIndex].quantity++;
-        } else {
-            cart.push({ 
-                id: productId, 
-                name: product.name,
-                price: parseFloat(price), 
-                quantity: 1, 
-                image: product.image, 
-                cliente: clienteLogado.email 
+        try {
+            const response = await fetch('http://localhost:3000/carrinho', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    usuario_id: clienteLogado.id,
+                    produto_id: productId,
+                    quantidade: 1
+                })
             });
+            if (!response.ok) throw new Error('Erro ao adicionar ao carrinho');
+            buttonElement.innerText = translations.addedToCart[currentLang];
+            buttonElement.style.backgroundColor = '#1a7d3c';
+            setTimeout(() => {
+                buttonElement.innerText = translations.addToCart[currentLang];
+                buttonElement.style.backgroundColor = 'var(--cor-primaria)';
+            }, 1500);
+            updateCartIconCount();
+        } catch (err) {
+            console.error('Erro ao adicionar ao carrinho:', err);
+            alert('Erro ao adicionar ao carrinho');
         }
-        localStorage.setItem("cart", JSON.stringify(cart));
-        buttonElement.innerText = translations.addedToCart[currentLang];
-        buttonElement.style.backgroundColor = '#1a7d3c';
-        setTimeout(() => {
-            buttonElement.innerText = translations.addToCart[currentLang];
-            buttonElement.style.backgroundColor = 'var(--cor-primaria)';
-        }, 1500);
-        updateCartIconCount();
     }
     
     // CHAMADA INICIAL
     setLanguage(currentLang);
     updateCartIconCount();
+});
+
+// --- Lógica de Exibição do Admin para Desktop e Mobile ---
+document.addEventListener("DOMContentLoaded", () => {
+    // Pega os elementos do Desktop e do Mobile
+    const adminLinkDesktop = document.getElementById("admin-link");
+    const adminLinkMobile = document.getElementById("admin-link-mobile");
+    
+    const user = JSON.parse(localStorage.getItem("clienteLogado"));
+
+    // Função para esconder ambos
+    function hideAdmin() {
+        if (adminLinkDesktop) adminLinkDesktop.style.display = "none";
+        if (adminLinkMobile) adminLinkMobile.style.display = "none";
+    }
+
+    // Função para mostrar ambos
+    function showAdmin() {
+        if (adminLinkDesktop) adminLinkDesktop.style.display = "inline-block"; 
+        if (adminLinkMobile) adminLinkMobile.style.display = "block"; 
+    }
+
+    // Lógica de verificação
+    if (!user) {
+        hideAdmin();
+        return;
+    }
+
+    // 0 = Admin, 1 = Cliente
+    if (user.tipoUsuario === 0) {
+        showAdmin();
+    } else {
+        hideAdmin();
+    }
+});
+
+/* =========================================
+   EFEITO DE NATAL (Neve + Cartão Minimizado)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. EFEITO DE NEVE
+    const snowContainer = document.getElementById('snow-container');
+
+    function createSnowflake() {
+        if (!snowContainer) return; // Segurança caso o elemento não exista
+
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        
+        // Tamanho aleatório (entre 2px e 5px)
+        const size = Math.random() * 5 + 2 + 'px';
+        snowflake.style.width = size;
+        snowflake.style.height = size;
+        
+        // Posição horizontal aleatória
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        
+        // Duração da queda aleatória (entre 3s e 8s)
+        const duration = Math.random() * 5 + 3 + 's';
+        snowflake.style.animationDuration = duration;
+        
+        // Opacidade aleatória
+        snowflake.style.opacity = Math.random();
+
+        snowContainer.appendChild(snowflake);
+
+        // Remove o floco do DOM depois que a animação termina
+        setTimeout(() => {
+            snowflake.remove();
+        }, 8000); 
+    }
+
+    // Cria um floco a cada 200ms
+    setInterval(createSnowflake, 200);
+
+    // 2. COMPORTAMENTO DO CARTÃO DE NATAL
+    const christmasCard = document.querySelector('.christmas-message');
+
+    if (christmasCard) {
+        // Aguarda 5 segundos e minimiza (efeito fantasma no canto)
+        setTimeout(() => {
+            christmasCard.classList.add('minimized');
+        }, 5000); 
+
+        // Se clicar quando estiver minimizado, fecha totalmente (opcional)
+        christmasCard.addEventListener('click', () => {
+            if (christmasCard.classList.contains('minimized')) {
+                christmasCard.style.display = 'none';
+            }
+        });
+    }
 });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - eKoviva</title>
+    <title>Acesso - eKoviva</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,49 +11,85 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
     <link rel="stylesheet" href="index.css">
-
     <link rel="stylesheet" href="entrar.css">
 </head>
 <body>
+
     <div class="top-bar">
-        <div class="container">
+        <div class="container-top">
              <div class="language-switcher">
                  <a href="#" class="lang-link active" data-lang="pt">PT</a>
                  <a href="#" class="lang-link" data-lang="en">EN</a>
              </div>
         </div>
     </div>
-    <main class="login-wrapper">
-        <a href="index.html"><img src="./imagem/logo2.png" alt="Logotipo eKoviva" class="logo"></a>
 
-        <div class="login-container">
-            <h2 data-lang-key="loginTitle">Acesse sua Conta</h2>
+    <main class="login-wrapper">
+        <a href="index.html" class="logo-link"><img src="./imagem/logo2.png" alt="Logotipo eKoviva" class="logo"></a>
+
+        <div class="login-card">
+            <h1 data-lang-key="loginTitle">Entrar</h1>
+            <span>Use sua conta de e-mail e senha</span>
+
             <form id="login-form">
-                <div class="form-group">
-                    <i class="bi bi-envelope icon"></i>
-                    <input type="email" id="email" data-placeholder-key="placeholderEmail" required>
+                <div class="input-group">
+                    <input type="email" id="email" data-placeholder-key="placeholderEmail" placeholder="Email" required>
                 </div>
-                <div class="form-group">
-                    <i class="bi bi-lock icon"></i>
-                    <input type="password" id="senha" data-placeholder-key="placeholderPassword" required>
+                <div class="input-group">
+                    <input type="password" id="senha" data-placeholder-key="placeholderPassword" placeholder="Senha" required>
                     <i class="bi bi-eye-slash password-toggle" id="password-toggle-icon"></i>
                 </div>
-                <button type="submit" id="login-button" data-lang-key="loginButton">Entrar</button>
-            </form>
-            <div id="message" class="message"></div>
 
-            <div class="form-links">
-                <p data-lang-key="noAccount">Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
-                <p><a href="index.html" data-lang-key="backToHome">Voltar à Página Inicial</a></p>
+                <div class="actions">
+                    <a href="#" id="btn-forgot-pass" data-lang-key="forgotPasswordLink">Esqueci minha senha</a>
+                </div>
+                
+                <button type="submit" id="login-button" data-lang-key="loginButton">Entrar</button>
+                
+                <div id="message" class="message"></div>
+            </form>
+
+            <div class="register-call">
+                <p>Não tem uma conta?</p>
+                <a href="cadastro.html" class="btn-outline">Cadastre-se</a>
             </div>
         </div>
     </main>
+
+    <div id="modal-recuperacao" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h3 data-lang-key="modalRecTitle">Redefinir Senha</h3>
+            <p data-lang-key="modalRecDesc">Confirme seus dados para criar uma nova senha.</p>
+            
+            <form id="form-recuperacao">
+                <div class="form-group-modal">
+                    <i class="bi bi-person-vcard icon"></i>
+                    <input type="text" id="rec-cpf" placeholder="CPF (somente números)" maxlength="14" required>
+                </div>
+                <div class="form-group-modal">
+                    <i class="bi bi-envelope icon"></i>
+                    <input type="email" id="rec-email" data-placeholder-key="placeholderEmail" required>
+                </div>
+                <div class="form-group-modal">
+                    <i class="bi bi-lock icon"></i>
+                    <input type="password" id="rec-senha" placeholder="Nova Senha" minlength="6" required>
+                </div>
+                <div class="form-group-modal">
+                    <i class="bi bi-lock-fill icon"></i>
+                    <input type="password" id="rec-confirmar" placeholder="Confirmar Senha" minlength="6" required>
+                </div>
+                <button type="submit" id="btn-send-rec" data-lang-key="modalRecBtn">Alterar Senha</button>
+            </form>
+            <div id="msg-recuperacao" class="message"></div>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <div class="interface">
             <div class="footer-content">
                 <div class="footer-section about">
-                    <a href="index.html"><img src="./imagem/logo2.png" alt="Logotipo eKoviva" class="footer-logo"></a>
+                    <img src="./imagem/logo2.png" alt="Logotipo eKoviva" class="footer-logo">
                     <p data-lang-key="footerDesc">Um projeto de estudantes de ADS para um mundo mais sustentável.</p>
                 </div>
                 <div class="footer-section links">
@@ -69,22 +105,12 @@
                     <p>
                         <i class="bi bi-geo-alt-fill"></i> Av. Exemplo Fictício, 1234<br>
                         São Paulo, SP - 01234-567<br>
-                        <i class="bi bi-envelope-fill"></i> contato@ekoviva.com.br<br>
-                        <i class="bi bi-telephone-fill"></i> (11) 98765-4321
+                        <i class="bi bi-envelope-fill"></i> contato@ekoviva.com.br
                     </p>
-                </div>
-                <div class="footer-section social">
-                    <h4 data-lang-key="footerSocial">Siga-nos</h4>
-                    <a href="https://www.instagram.com/SEU_USUARIO_AQUI" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="https://www.facebook.com/SUA_PAGINA_AQUI" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="https://wa.me/5511999998888" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-lang-key="footerRights">&copy; 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos reservados.</p>
-                <p style="font-size: 0.8em; margin-top: 10px; color: #aaa;" data-lang-key="footerLgpd">
-                    Este site respeita a sua privacidade. Estamos em conformidade com a Lei Geral de Proteção de Dados (LGPD). Para saber mais, acesse nossa <a href="politica-privacidade.html" target="_blank" style="color: #ccc; text-decoration: underline;">Política de Privacidade</a>.
-                </p>
+                <p data-lang-key="footerRights">&copy; 2025 eKoviva - Projeto Integrador Acadêmico.</p>
                 <a href="bancodedados.html" class="btn-admin" target="_blank" data-lang-key="footerAdmin">Gerenciar Dados</a>
             </div>
         </div>

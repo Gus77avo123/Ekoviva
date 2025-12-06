@@ -1,187 +1,197 @@
-// --- SISTEMA DE TRADUÇÃO ---
+/* ===========================================================
+   SISTEMA DE TRADUÇÃO
+   =========================================================== */
 const translations = {
-    backToHome: { pt: '← Voltar para a Loja', en: '← Back to Store' },
-    headerTitle: { pt: 'Cadastro de Cliente - eKoviva', en: 'Customer Registration - eKoviva' },
-    headerSubtitle: { pt: 'Preencha o formulário abaixo para se cadastrar e aproveitar nossos produtos ecológicos.', en: 'Fill out the form below to register and enjoy our eco-friendly products.' },
-    formTitle: { pt: 'Formulário de Cadastro', en: 'Registration Form' },
-    formInfo: { pt: 'Crie sua conta para se tornar um cliente eKoviva.', en: 'Create your account to become an eKoviva customer.' },
-    labelName: { pt: 'Nome Completo:', en: 'Full Name:' },
-    placeholderName: { pt: 'Digite seu nome completo', en: 'Enter your full name' },
-    labelEmail: { pt: 'E-mail:', en: 'E-mail:' },
-    placeholderEmail: { pt: 'exemplo@dominio.com', en: 'example@domain.com' },
-    labelPhone: { pt: 'Telefone:', en: 'Phone:' },
-    placeholderPhone: { pt: '(XX) XXXXX-XXXX', en: '(XX) XXXXX-XXXX' },
-    labelCpf: { pt: 'CPF:', en: 'CPF (ID):' },
+    backToHome: { pt: '← Voltar para Login', en: '← Back to Login' },
+    headerTitle: { pt: 'Criar Conta', en: 'Create Account' },
+    headerSubtitle: { pt: 'Preencha seus dados abaixo', en: 'Fill in your details below' },
+    formTitle: { pt: 'Criar Conta', en: 'Create Account' },
+    formInfo: { pt: 'Preencha seus dados abaixo', en: 'Fill in your details below' },
+    
+    labelName: { pt: 'Nome Completo', en: 'Full Name' },
+    placeholderName: { pt: 'Seu nome', en: 'Your name' },
+    
+    labelEmail: { pt: 'E-mail', en: 'Email' },
+    placeholderEmail: { pt: 'exemplo@email.com', en: 'example@email.com' },
+    
+    labelPhone: { pt: 'Telefone', en: 'Phone' },
+    placeholderPhone: { pt: '(99) 99999-9999', en: '(99) 99999-9999' },
+    
+    labelCpf: { pt: 'CPF', en: 'ID Number' },
     placeholderCpf: { pt: '000.000.000-00', en: '000.000.000-00' },
-    titleCpf: { pt: 'Digite o CPF no formato 000.000.000-00', en: 'Enter the CPF in the format 000.000.000-00' },
-    labelPassword: { pt: 'Senha:', en: 'Password:' },
-    placeholderPassword: { pt: 'Crie uma senha segura', en: 'Create a secure password' },
-    labelConfirmPassword: { pt: 'Confirmar Senha:', en: 'Confirm Password:' },
-    placeholderConfirmPassword: { pt: 'Confirme sua senha', en: 'Confirm your password' },
-    labelAddress: { pt: 'Endereço Completo:', en: 'Full Address:' },
-    placeholderAddress: { pt: 'Rua, Número, Bairro, Cidade - Estado, CEP', en: 'Street, Number, Neighborhood, City - State, ZIP Code' },
-    labelDob: { pt: 'Data de Nascimento:', en: 'Date of Birth:' },
-    labelPhoto: { pt: 'Foto de Perfil (opcional):', en: 'Profile Picture (optional):' },
-    fileInfo: { pt: 'Tamanho máximo: 1MB. Formatos aceitos: JPG, PNG, GIF.', en: 'Max size: 1MB. Accepted formats: JPG, PNG, GIF.' },
-    submitButton: { pt: 'Cadastrar', en: 'Register' },
-    submitButtonLoading: { pt: 'Cadastrando...', en: 'Registering...' },
-    successMessage: { pt: 'Cadastro realizado com sucesso! Redirecionando para a página inicial...', en: 'Registration successful! Redirecting to the homepage...' },
-    successButton: { pt: 'Ir para o Início', en: 'Go to Homepage' },
-    alertRequired: { pt: 'Por favor, preencha todos os campos obrigatórios!', en: 'Please fill in all required fields!' },
-    alertCpfInvalid: { pt: 'Formato de CPF inválido. Use 000.000.000-00.', en: 'Invalid CPF format. Use 000.000.000-00.' },
-    alertPasswordMismatch: { pt: 'As senhas não coincidem!', en: 'Passwords do not match!' },
-    alertPasswordShort: { pt: 'A senha deve ter no mínimo 6 caracteres.', en: 'Password must be at least 6 characters long.' },
-    alertPhotoSize: { pt: 'A foto excede o limite de 1MB. Por favor, escolha uma imagem menor.', en: 'The photo exceeds the 1MB limit. Please choose a smaller image.' },
-    alertPhotoError: { pt: 'Erro ao processar a foto:', en: 'Error processing the photo:' },
-    alertEmailExists: { pt: 'Este e-mail já está cadastrado!', en: 'This e-mail is already registered!' },
-    alertCpfExists: { pt: 'Este CPF já está cadastrado!', en: 'This CPF (ID) is already registered!' },
-    alertStorageQuota: { pt: 'O armazenamento local está cheio. Não foi possível salvar o cadastro. Tente remover alguns dados ou usar uma foto menor.', en: 'Local storage is full. Could not save registration. Try removing some data or using a smaller photo.' },
-    alertGenericError: { pt: 'Ocorreu um erro ao realizar o cadastro:', en: 'An error occurred during registration:' }
+    
+    labelPassword: { pt: 'Senha', en: 'Password' },
+    placeholderPassword: { pt: 'Mínimo 6 caracteres', en: 'Min 6 characters' },
+    
+    labelConfirmPassword: { pt: 'Confirmar Senha', en: 'Confirm Password' },
+    placeholderConfirmPassword: { pt: 'Repita a senha', en: 'Repeat password' },
+    
+    labelAddress: { pt: 'Endereço Completo', en: 'Full Address' },
+    placeholderAddress: { pt: 'Rua, Número, Bairro...', en: 'Street, Number...' },
+    
+    labelDob: { pt: 'Nascimento', en: 'Date of Birth' },
+    labelPhoto: { pt: 'Foto de Perfil (Opcional)', en: 'Profile Picture (Optional)' },
+    
+    submitButton: { pt: 'CRIAR CONTA', en: 'CREATE ACCOUNT' },
+    submitButtonLoading: { pt: 'CADASTRANDO...', en: 'REGISTERING...' },
+    successMessage: { pt: 'Cadastro realizado com sucesso!', en: 'Registration successful!' },
+    
+    // Alertas
+    alertRequired: { pt: 'Preencha todos os campos!', en: 'Fill all fields!' },
+    alertCpfInvalid: { pt: 'CPF inválido.', en: 'Invalid ID.' },
+    alertPasswordMismatch: { pt: 'As senhas não coincidem.', en: 'Passwords do not match.' },
+    alertEmailExists: { pt: 'E-mail já cadastrado.', en: 'Email already exists.' },
+    alertCpfExists: { pt: 'CPF já cadastrado.', en: 'ID already exists.' }
 };
 
-const languageLinks = document.querySelectorAll('.lang-link');
 let currentLang = localStorage.getItem('language') || 'pt';
 
-const setLanguage = (lang) => {
+function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('language', lang);
+    document.querySelectorAll('[data-lang-key]').forEach(el => {
+        const key = el.dataset.langKey;
+        if (translations[key]) el.innerHTML = translations[key][lang];
+    });
+    document.querySelectorAll('[data-placeholder-key]').forEach(el => {
+        const key = el.dataset.placeholderKey;
+        if (translations[key]) el.placeholder = translations[key][lang];
+    });
+    document.querySelectorAll('.lang-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.lang === lang);
+    });
+}
+
+/* ===========================================================
+   VALIDAÇÃO CPF & SENHA
+   =========================================================== */
+function validarCPF(cpf) {
+    cpf = cpf.replace(/\D/g, '');
+    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+    let soma = 0, resto;
+    for (let i = 1; i <= 9; i++) soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
+    resto = (soma * 10) % 11;
+    if ((resto == 10) || (resto == 11)) resto = 0;
+    if (resto != parseInt(cpf.substring(9, 10))) return false;
+    soma = 0;
+    for (let i = 1; i <= 10; i++) soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
+    resto = (soma * 10) % 11;
+    if ((resto == 10) || (resto == 11)) resto = 0;
+    if (resto != parseInt(cpf.substring(10, 11))) return false;
+    return true;
+}
+
+function calcularForcaSenha(senha) {
+    let score = 0;
+    if (senha.length >= 6) score++;
+    if (/[A-Z]/.test(senha)) score++;
+    if (/[0-9]/.test(senha)) score++;
+    if (/[^A-Za-z0-9]/.test(senha)) score++;
+    return score;
+}
+
+function atualizarForcaSenha() {
+    const senha = document.getElementById('senha').value;
+    const fill = document.getElementById('strength-fill');
+    const text = document.getElementById('strength-text');
+    const score = calcularForcaSenha(senha);
+
+    fill.className = 'strength-fill'; // reset
     
-    // Traduz innerHTML/textContent
-    document.querySelectorAll('[data-lang-key]').forEach(elem => {
-        const key = elem.getAttribute('data-lang-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.innerHTML = translations[key][lang];
-        }
-    });
+    if (!senha) {
+        fill.style.width = '0%';
+        text.textContent = '';
+        return;
+    }
 
-    // Traduz placeholders
-     document.querySelectorAll('[data-placeholder-key]').forEach(elem => {
-        const key = elem.getAttribute('data-placeholder-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.placeholder = translations[key][lang];
-        }
-    });
+    if (score <= 1) { fill.classList.add('strength-fraca'); text.textContent = 'Fraca'; }
+    else if (score === 2) { fill.classList.add('strength-media'); text.textContent = 'Média'; }
+    else { fill.classList.add('strength-forte'); text.textContent = 'Forte'; }
+}
 
-     // Traduz titles
-      document.querySelectorAll('[data-title-key]').forEach(elem => {
-        const key = elem.getAttribute('data-title-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.title = translations[key][lang];
-        }
-    });
-
-    // Atualiza o seletor de idioma
-    languageLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-lang') === lang) {
-            link.classList.add('active');
-        }
-    });
-};
-
-languageLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const selectedLang = link.getAttribute('data-lang');
-        setLanguage(selectedLang);
-    });
-});
-
-// --- FIM DO SISTEMA DE TRADUÇÃO ---
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicializa o idioma na carga da página
-    setLanguage(currentLang);
-
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('data-nascimento').setAttribute('max', today);
-
-    const form = document.getElementById('form-cadastro');
-    form.addEventListener('submit', cadastrarCliente);
-});
-
-async function cadastrarCliente(event) {
-    event.preventDefault(); 
-    const submitButton = document.getElementById('submit-button');
-    const formContent = document.getElementById('form-content');
-    const successMessageContainer = document.getElementById('success-message-container');
-
-    submitButton.disabled = true;
-    submitButton.textContent = translations.submitButtonLoading[currentLang];
-
-    try {
-        const nome = document.getElementById("nome").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const telefone = document.getElementById("telefone").value.trim();
-        const cpf = document.getElementById("cpf").value.trim();
-        const senha = document.getElementById("senha").value;
-        const confirmarSenha = document.getElementById("confirmar-senha").value;
-        const endereco = document.getElementById("endereco").value.trim();
-        const dataNascimento = document.getElementById("data-nascimento").value;
-        const fotoInput = document.getElementById("foto");
-
-        if (!nome || !email || !telefone || !cpf || !senha || !confirmarSenha || !endereco || !dataNascimento) {
-            throw new Error(translations.alertRequired[currentLang]);
-        }
-
-        const cpfPattern = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-        if (!cpfPattern.test(cpf)) {
-            throw new Error(translations.alertCpfInvalid[currentLang]);
-        }
-
-        if (senha !== confirmarSenha) {
-            throw new Error(translations.alertPasswordMismatch[currentLang]);
-        }
-
-        if (senha.length < 6) {
-            throw new Error(translations.alertPasswordShort[currentLang]);
-        }
-
-        let fotoUrl = "";
-        if (fotoInput.files && fotoInput.files.length > 0) {
-            const file = fotoInput.files[0];
-            const fileSizeMB = file.size / (1024 * 1024);
-            if (fileSizeMB > 1) {
-                throw new Error(translations.alertPhotoSize[currentLang]);
-            }
-            fotoUrl = await readFileAsDataURL(file);
-        }
-
-        const cliente = { id: Date.now(), nome, email, telefone, cpf, senha, endereco, data_nascimento: dataNascimento, foto: fotoUrl };
-        let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
-
-        if (clientes.some(c => c.email === email)) {
-            throw new Error(translations.alertEmailExists[currentLang]);
-        }
-        if (clientes.some(c => c.cpf === cpf)) {
-            throw new Error(translations.alertCpfExists[currentLang]);
-        }
-
-        clientes.push(cliente);
-        localStorage.setItem("clientes", JSON.stringify(clientes));
-
-        formContent.style.display = 'none';
-        successMessageContainer.style.display = 'block';
-
-        setTimeout(() => {
-            window.location.href = "index.html?registration=success";
-        }, 3000);
-
-    } catch (error) {
-        alert(error.message);
-        console.error("Erro ao cadastrar cliente:", error.message);
-    } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = translations.submitButton[currentLang];
+function toggleSenha(id, btn) {
+    const input = document.getElementById(id);
+    const icon = btn.querySelector('i');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'bi bi-eye';
+    } else {
+        input.type = 'password';
+        icon.className = 'bi bi-eye-slash';
     }
 }
 
-function readFileAsDataURL(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (errorEvent) => reject(new Error(translations.alertPhotoError[currentLang] + (errorEvent.target.error.name || '')));
-        reader.readAsDataURL(file);
+/* ===========================================================
+   INICIALIZAÇÃO & SUBMIT
+   =========================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    setLanguage(currentLang);
+
+    document.querySelectorAll('.lang-link').forEach(l => l.addEventListener('click', e => {
+        e.preventDefault(); setLanguage(l.dataset.lang);
+    }));
+
+    const inputs = {
+        cpf: document.getElementById('cpf'),
+        tel: document.getElementById('telefone'),
+        senha: document.getElementById('senha'),
+        nasc: document.getElementById('data-nascimento')
+    };
+
+    // Máscaras
+    if (inputs.cpf) inputs.cpf.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/\D/g,'').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');
     });
+    if (inputs.tel) inputs.tel.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/\D/g,'').replace(/^(\d{2})(\d)/g,'($1) $2').replace(/(\d)(\d{4})$/,'$1-$2');
+    });
+    if (inputs.senha) inputs.senha.addEventListener('input', atualizarForcaSenha);
+    if (inputs.nasc) inputs.nasc.setAttribute('max', new Date().toISOString().split('T')[0]);
+
+    document.getElementById('form-cadastro').addEventListener('submit', cadastrarCliente);
+});
+
+async function cadastrarCliente(e) {
+    e.preventDefault();
+    
+    const form = {
+        nome: document.getElementById('nome').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        telefone: document.getElementById('telefone').value.trim(),
+        cpf: document.getElementById('cpf').value.trim(),
+        senha: document.getElementById('senha').value,
+        confirmar: document.getElementById('confirmar-senha').value,
+        endereco: document.getElementById('endereco').value.trim(),
+        nasc: document.getElementById('data-nascimento').value,
+        btn: document.getElementById('submit-button')
+    };
+
+    if (form.senha !== form.confirmar) return alert(translations.alertPasswordMismatch[currentLang]);
+    if (!validarCPF(form.cpf)) return alert(translations.alertCpfInvalid[currentLang]);
+
+    form.btn.disabled = true;
+    form.btn.textContent = translations.submitButtonLoading[currentLang];
+
+    try {
+        const res = await fetch('http://localhost:3000/usuarios', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                nome: form.nome, email: form.email, telefone: form.tel, cpf: form.cpf,
+                senha: form.senha, endereco: form.endereco, data_nascimento: form.nasc, tipoUsuario: 1
+            })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Erro');
+
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('success-message-container').style.display = 'block';
+        setTimeout(() => window.location.href = 'index.html?reg=ok', 2500);
+
+    } catch (err) {
+        alert(err.message.includes('email') ? translations.alertEmailExists[currentLang] : translations.alertCpfExists[currentLang]);
+        form.btn.disabled = false;
+        form.btn.textContent = translations.submitButton[currentLang];
+    }
 }

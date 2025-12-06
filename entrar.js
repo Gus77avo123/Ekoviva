@@ -1,115 +1,186 @@
-// --- SISTEMA DE TRADUÇÃO ---
 const translations = {
-    loginTitle: { pt: 'Acesse sua Conta', en: 'Access Your Account' },
-    placeholderEmail: { pt: 'E-mail', en: 'E-mail' },
-    placeholderPassword: { pt: 'Senha', en: 'Password' },
-    loginButton: { pt: 'Entrar', en: 'Sign In' },
-    loginButtonLoading: { pt: '<i class="bi bi-arrow-repeat"></i> Verificando...', en: '<i class="bi bi-arrow-repeat"></i> Verifying...' },
-    noAccount: { pt: 'Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>', en: 'Don\'t have an account? <a href="cadastro.html">Sign up</a>' },
-    backToHome: { pt: 'Voltar à Página Inicial', en: 'Back to Homepage' },
-    // Mensagens
-    successWelcome: { pt: 'Bem-vindo, {name}! Redirecionando...', en: 'Welcome, {name}! Redirecting...' },
-    errorWrongPass: { pt: 'Senha incorreta. Tente novamente.', en: 'Incorrect password. Please try again.' },
-    errorUserNotFound: { pt: 'E-mail não cadastrado. <a href="cadastro.html">Cadastre-se aqui</a>.', en: 'E-mail not registered. <a href="cadastro.html">Sign up here</a>.' },
-    // Rodapé
-    footerDesc: { pt: 'Um projeto de estudantes de ADS para um mundo mais sustentável.', en: 'A project by Systems Analysis students for a more sustainable world.' },
-    footerNav: { pt: 'Navegação', en: 'Navigation' },
-    footerAbout: { pt: 'Sobre o Projeto', en: 'About the Project' },
-    footerProducts: { pt: 'Produtos', en: 'Products' },
-    footerRegister: { pt: 'Cadastro', en: 'Register' },
-    footerSocial: { pt: 'Siga-nos', en: 'Follow Us' },
-    footerRights: { pt: '© 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos reservados.', en: '© 2025 eKoviva - Academic Capstone Project. All rights reserved.' },
+  loginTitle: { pt: 'Entrar', en: 'Sign In' },
+  placeholderEmail: { pt: 'Email', en: 'Email' },
+  placeholderPassword: { pt: 'Senha', en: 'Password' },
+  loginButton: { pt: 'Entrar', en: 'Sign In' },
+  loginButtonLoading: { pt: 'Verificando...', en: 'Verifying...' },
+  forgotPasswordLink: { pt: 'Esqueci minha senha', en: 'Forgot my password' },
+  modalRecTitle: { pt: 'Redefinir Senha', en: 'Reset Password' },
+  modalRecDesc: { pt: 'Confirme seus dados para criar uma nova senha.', en: 'Verify your data to create a new password.' },
+  modalRecBtn: { pt: 'Alterar Senha', en: 'Change Password' },
+  successWelcome: { pt: 'Bem-vindo, {name}!', en: 'Welcome, {name}!' },
+  errorWrongPass: { pt: 'Senha incorreta.', en: 'Incorrect password.' },
+  errorUserNotFound: { pt: 'E-mail não encontrado.', en: 'E-mail not found.' },
+  errorServer: { pt: 'Erro no servidor.', en: 'Server error.' },
+  alertRecSuccess: { pt: 'Senha redefinida!', en: 'Password reset!' },
+  alertPassMismatch: { pt: 'Senhas não conferem.', en: 'Passwords do not match.' },
+  footerDesc: { pt: 'Um projeto de estudantes de ADS.', en: 'A project by ADS students.' },
+  footerNav: { pt: 'Navegação', en: 'Navigation' },
+  footerContact: { pt: 'Contato', en: 'Contact' },
+  footerRegister: { pt: 'Cadastro', en: 'Register' },
 };
 
 const languageLinks = document.querySelectorAll('.lang-link');
 let currentLang = localStorage.getItem('language') || 'pt';
 
 const setLanguage = (lang) => {
-    currentLang = lang;
-    localStorage.setItem('language', lang);
-    
-    document.querySelectorAll('[data-lang-key]').forEach(elem => {
-        const key = elem.getAttribute('data-lang-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.innerHTML = translations[key][lang];
-        }
-    });
-
-    document.querySelectorAll('[data-placeholder-key]').forEach(elem => {
-        const key = elem.getAttribute('data-placeholder-key');
-        if (translations[key] && translations[key][lang]) {
-            elem.placeholder = translations[key][lang];
-        }
-    });
-
-    languageLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-lang') === lang) {
-            link.classList.add('active');
-        }
-    });
+  currentLang = lang;
+  localStorage.setItem('language', lang);
+  document.querySelectorAll('[data-lang-key]').forEach(elem => {
+    const key = elem.getAttribute('data-lang-key');
+    if (translations[key] && translations[key][lang]) {
+        elem.innerHTML = translations[key][lang];
+    }
+  });
+  document.querySelectorAll('[data-placeholder-key]').forEach(elem => {
+    const key = elem.getAttribute('data-placeholder-key');
+    if (translations[key]) elem.placeholder = translations[key][lang];
+  });
+  languageLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('data-lang') === lang);
+  });
 };
 
 languageLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const selectedLang = link.getAttribute('data-lang');
-        setLanguage(selectedLang);
-    });
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    setLanguage(link.getAttribute('data-lang'));
+  });
 });
 
-// --- FIM DO SISTEMA DE TRADUÇÃO ---
+document.addEventListener('DOMContentLoaded', function () {
+  setLanguage(currentLang);
 
-document.addEventListener('DOMContentLoaded', function() {
-    setLanguage(currentLang); // Aplica o idioma na carga da página
+  // --- LÓGICA DE LOGIN ---
+  const loginForm = document.getElementById('login-form');
+  const emailInput = document.getElementById('email');
+  const senhaInput = document.getElementById('senha');
+  const messageEl = document.getElementById('message');
+  const loginButton = document.getElementById('login-button');
+  const togglePasswordIcon = document.getElementById('password-toggle-icon');
 
-    const loginForm = document.getElementById('login-form');
-    const emailInput = document.getElementById("email");
-    const senhaInput = document.getElementById("senha");
-    const messageEl = document.getElementById("message");
-    const loginButton = document.getElementById("login-button");
-    const togglePasswordIcon = document.getElementById("password-toggle-icon");
+  loginForm.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    const email = emailInput.value.trim();
+    const senha = senhaInput.value.trim();
+    messageEl.style.display = 'none';
+    loginButton.disabled = true;
+    loginButton.innerHTML = translations.loginButtonLoading[currentLang];
 
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const email = emailInput.value;
-        const senha = senhaInput.value;
-        messageEl.style.display = 'none';
-        messageEl.className = 'message';
-        loginButton.disabled = true;
-        loginButton.innerHTML = translations.loginButtonLoading[currentLang];
-        
-        const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
-        const clientePorEmail = clientes.find(cliente => cliente.email === email);
-        
-        setTimeout(() => {
-            if (clientePorEmail) {
-                if (clientePorEmail.senha === senha) {
-                    messageEl.classList.add("success");
-                    messageEl.textContent = translations.successWelcome[currentLang].replace('{name}', clientePorEmail.nome);
-                    localStorage.setItem("clienteLogado", JSON.stringify(clientePorEmail));
-                    setTimeout(() => {
-                        window.location.href = "index.html";
-                    }, 1500);
-                } else {
-                    messageEl.classList.add("error");
-                    messageEl.textContent = translations.errorWrongPass[currentLang];
-                    loginButton.disabled = false;
-                    loginButton.innerHTML = translations.loginButton[currentLang];
-                }
-            } else {
-                messageEl.classList.add("error");
-                messageEl.innerHTML = translations.errorUserNotFound[currentLang];
-                loginButton.disabled = false;
-                loginButton.innerHTML = translations.loginButton[currentLang];
-            }
-        }, 1000);
-    });
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha })
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Erro no login');
 
-    togglePasswordIcon.addEventListener('click', function() {
-        const isPassword = senhaInput.type === 'password';
-        senhaInput.type = isPassword ? 'text' : 'password';
-        this.classList.toggle('bi-eye');
-        this.classList.toggle('bi-eye-slash');
-    });
+      messageEl.style.display = 'block';
+      messageEl.className = 'message success';
+      messageEl.innerHTML = translations.successWelcome[currentLang].replace('{name}', data.nome);
+
+      localStorage.setItem('clienteLogado', JSON.stringify({
+        id: data.id, nome: data.nome, email: data.email, tipoUsuario: data.tipoUsuario
+      }));
+
+      setTimeout(() => {
+        if (data.tipoUsuario === 0) window.location.href = 'admin.html';
+        else window.location.href = 'index.html';
+      }, 1500);
+
+    } catch (err) {
+      messageEl.style.display = 'block';
+      messageEl.className = 'message error';
+      if (err.message.includes('não encontrado')) messageEl.innerHTML = translations.errorUserNotFound[currentLang];
+      else if (err.message.includes('Senha')) messageEl.textContent = translations.errorWrongPass[currentLang];
+      else messageEl.textContent = translations.errorServer[currentLang];
+    } finally {
+      loginButton.disabled = false;
+      loginButton.innerHTML = translations.loginButton[currentLang];
+    }
+  });
+
+  togglePasswordIcon.addEventListener('click', function () {
+    const isPassword = senhaInput.type === 'password';
+    senhaInput.type = isPassword ? 'text' : 'password';
+    this.classList.toggle('bi-eye');
+    this.classList.toggle('bi-eye-slash');
+  });
+
+  // --- LÓGICA DE RECUPERAÇÃO DE SENHA (MODAL) ---
+  const modalRec = document.getElementById('modal-recuperacao');
+  const btnForgot = document.getElementById('btn-forgot-pass');
+  const btnCloseModal = document.getElementById('close-modal');
+  const formRec = document.getElementById('form-recuperacao');
+  const msgRec = document.getElementById('msg-recuperacao');
+
+  const cpfInput = document.getElementById('rec-cpf');
+  cpfInput.addEventListener('input', (e) => {
+      let v = e.target.value.replace(/\D/g, "");
+      if (v.length > 11) v = v.slice(0, 11);
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      e.target.value = v;
+  });
+
+  btnForgot.onclick = (e) => {
+      e.preventDefault();
+      modalRec.style.display = "flex"; 
+      msgRec.style.display = "none";
+      formRec.reset();
+  }
+
+  btnCloseModal.onclick = () => modalRec.style.display = "none";
+  window.onclick = (e) => { if (e.target == modalRec) modalRec.style.display = "none"; }
+
+  formRec.onsubmit = async (e) => {
+      e.preventDefault();
+      const cpf = document.getElementById('rec-cpf').value;
+      const email = document.getElementById('rec-email').value;
+      const novaSenha = document.getElementById('rec-senha').value;
+      const confirmar = document.getElementById('rec-confirmar').value;
+      const btnSend = document.getElementById('btn-send-rec');
+
+      if (novaSenha !== confirmar) {
+          msgRec.className = 'message error';
+          msgRec.innerText = translations.alertPassMismatch[currentLang];
+          msgRec.style.display = 'block';
+          return;
+      }
+      
+      btnSend.disabled = true;
+      btnSend.innerText = "...";
+
+      try {
+          const res = await fetch('http://localhost:3000/redefinir-senha', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ cpf, email, novaSenha })
+          });
+          
+          const data = await res.json();
+
+          if (res.ok) {
+              msgRec.className = 'message success';
+              msgRec.innerText = translations.alertRecSuccess[currentLang];
+              msgRec.style.display = 'block';
+              setTimeout(() => {
+                  modalRec.style.display = "none";
+              }, 3000);
+          } else {
+              msgRec.className = 'message error';
+              msgRec.innerText = data.error;
+              msgRec.style.display = 'block';
+          }
+      } catch (err) {
+          msgRec.className = 'message error';
+          msgRec.innerText = translations.errorServer[currentLang];
+          msgRec.style.display = 'block';
+      } finally {
+          btnSend.disabled = false;
+          btnSend.innerText = translations.modalRecBtn[currentLang];
+      }
+  };
 });

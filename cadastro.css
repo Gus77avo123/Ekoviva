@@ -1,278 +1,201 @@
 :root {
     --cor-primaria: #28a745;
-    --cor-primaria-hover: #218838;
+    --cor-primaria-dark: #1e7e34;
+    --cor-fundo-input: #f0f2f5;
+    --cor-texto: #333;
+    --cor-cinza: #888;
+    --cor-fraca: #ff4d4d;
+    --cor-media: #ff9800;
+    --cor-forte: #28a745;
 }
-body {
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    color: #333;
-    line-height: 1.6;
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;
 }
-/* BARRA SUPERIOR E SELETOR DE IDIOMA */
-.top-bar {
-    padding: 10px 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-.top-bar .container {
-    width: 90%;
-    max-width: 700px; /* Alinha com o formulário */
-    margin: 0 auto;
+
+body, html { height: 100%; overflow-x: hidden; }
+
+/* LAYOUT PRINCIPAL */
+.split-screen {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.language-switcher { display: flex; gap: 5px; border: 1px solid #ddd; border-radius: 20px; padding: 2px; }
-.language-switcher a { color: #666; text-decoration: none; padding: 4px 10px; font-size: 0.8em; font-weight: 600; border-radius: 20px; transition: all 0.3s; }
-.language-switcher a.active { background-color: var(--cor-primaria); color: #fff; }
-
-a.back-to-home {
-    color: var(--cor-primaria);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9em;
-}
-a.back-to-home:hover { text-decoration: underline; }
-
-header {
-    background-color: var(--cor-primaria);
-    color: white;
-    text-align: center;
-    padding: 25px 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-header h1 {
-    margin: 0;
-    font-size: 2em;
-}
-header p {
-    font-size: 1.1em;
-    margin-top: 5px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-section {
-    padding: 30px;
-    margin: 30px auto;
-    width: 90%;
-    max-width: 700px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-.form-container {
-    margin-top: 20px;
-}
-.form-container label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-}
-.form-container input,
-.form-container select,
-.form-container button {
-    padding: 12px;
-    margin-bottom: 18px;
+    height: 100vh;
     width: 100%;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
-.form-container input:focus,
-.form-container select:focus {
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-    outline: none;
-}
-.form-container button {
-    background-color: var(--cor-primaria);
+
+/* --- LADO ESQUERDO (DECORATIVO) --- */
+.left-panel {
+    flex: 1;
+    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-.form-container button:hover {
-    background-color: var(--cor-primaria-hover);
-}
-.form-container button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-.title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: var(--cor-primaria);
     text-align: center;
 }
-.info {
-    font-size: 18px;
-    margin-bottom: 25px;
-    text-align: center;
-    color: #666;
+
+.left-panel::before, .left-panel::after {
+    content: ''; position: absolute; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
 }
-.file-input-info {
+.left-panel::before { width: 400px; height: 400px; top: -100px; left: -100px; }
+.left-panel::after { width: 600px; height: 600px; bottom: -150px; right: -150px; }
+
+.overlay { position: relative; z-index: 2; padding: 40px; }
+.logo-img { max-width: 180px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+.welcome-text h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.welcome-text p { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
+
+/* --- LADO DIREITO (FORMULÁRIO) --- */
+.right-panel {
+    flex: 1.2;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 0 0; /* Padding lateral removido aqui para o footer ocupar 100% */
+    overflow-y: auto;
+}
+
+/* Ajuste de padding para o conteúdo interno (menos footer) */
+.top-actions, .form-content, .success-box {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+/* Barra de Topo */
+.top-actions {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;
+}
+.back-link { color: var(--cor-cinza); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+.back-link:hover { color: var(--cor-primaria); }
+
+.language-switcher { display: flex; gap: 5px; border: 1px solid #ddd; border-radius: 20px; padding: 2px; }
+.lang-link { color: #666; text-decoration: none; padding: 4px 10px; font-size: 0.75em; font-weight: 600; border-radius: 20px; transition: 0.3s; }
+.lang-link.active { background-color: var(--cor-primaria); color: #fff; }
+
+/* Conteúdo Form */
+.form-content { max-width: 700px; margin: 0 auto; width: 100%; flex-grow: 1; padding-bottom: 40px;}
+.form-content h2 { font-size: 1.8rem; color: #333; margin-bottom: 5px; }
+.subtitle { color: #888; margin-bottom: 30px; font-size: 0.95rem; }
+
+/* Inputs */
+.row { display: flex; gap: 20px; }
+.input-group { margin-bottom: 20px; width: 100%; }
+
+.input-group label {
+    display: block; font-size: 0.85rem; font-weight: 600; 
+    color: #555; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+input {
+    width: 100%; padding: 12px 15px; border: 1px solid transparent;
+    background-color: var(--cor-fundo-input); border-radius: 8px;
+    font-size: 0.95rem; color: #333; transition: 0.3s; outline: none;
+}
+input:focus { border-color: var(--cor-primaria); background-color: #fff; box-shadow: 0 0 0 3px rgba(40,167,69,0.1); }
+
+.password-wrapper { position: relative; }
+.password-toggle { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; }
+
+.strength-bar { height: 4px; background: #eee; border-radius: 2px; margin-top: 8px; overflow: hidden; }
+.strength-fill { height: 100%; width: 0; transition: 0.3s; }
+.strength-fraca { background: var(--cor-fraca); width: 30%; }
+.strength-media { background: var(--cor-media); width: 60%; }
+.strength-forte { background: var(--cor-forte); width: 100%; }
+.strength-text { font-size: 0.75rem; margin-top: 4px; color: #888; text-align: right; }
+
+button[type="submit"] {
+    width: 100%; padding: 15px; border: none; border-radius: 8px;
+    background: linear-gradient(to right, #28a745, #1e7e34);
+    color: white; font-size: 1rem; font-weight: 700; cursor: pointer;
+    margin-top: 10px; transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase; letter-spacing: 1px;
+}
+button[type="submit"]:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(40,167,69,0.3); }
+button[type="submit"]:disabled { background: #ccc; cursor: not-allowed; }
+
+.file-input { padding: 10px; background: #fff; border: 1px dashed #ccc; }
+
+.success-box { text-align: center; margin-top: 50px; padding: 0 60px; }
+.success-box i { font-size: 4rem; color: var(--cor-primaria); margin-bottom: 20px; display: block; }
+
+/* ============================= */
+/* RODAPÉ (Igual à imagem)       */
+/* ============================= */
+.site-footer {
+    background-color: #1a1a1a; /* Fundo bem escuro */
+    color: #ccc;
+    padding: 50px 60px 20px;
     font-size: 0.9em;
-    color: #777;
-    display: block;
-    margin-top: -10px;
-    margin-bottom: 15px;
-}
-#success-message-container {
-    text-align: center;
-    padding: 20px;
-    background-color: #e6ffe6;
-    border: 1px solid var(--cor-primaria);
-    border-radius: 8px;
-    margin-top: 20px;
-    display: none;
-}
-#success-message-container p {
-    color: var(--cor-primaria);
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-#success-message-container button {
-    background-color: var(--cor-primaria);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-    width: auto;
-    margin-bottom: 0;
-}
-#success-message-container button:hover {
-    background-color: var(--cor-primaria-hover);
-}
-/* ============================================= */
-/* === CÓDIGO DE RESPONSIVIDADE UNIVERSAL === */
-/* ============================================= */
-
-/* Regra de Ouro: Imagens Flexíveis */
-/* Impede que imagens quebrem o layout em telas pequenas. */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+    margin-top: auto; /* Empurra para o fundo se o form for curto */
+    width: 100%;
 }
 
-/* Base do Layout Fluido */
-/* A classe .interface controla a largura do conteúdo principal. */
-.interface {
-    width: 90%; /* Ocupa 90% da tela */
-    max-width: 1280px; /* Limite para telas muito grandes */
-    margin: 0 auto; /* Centraliza */
-}
-
-
-/* --- ESTILOS PADRÃO (MOBILE FIRST) --- */
-/* Como os elementos se comportam em telas pequenas (layout de coluna única) */
-
-/* Títulos das Seções */
-.section-title {
-    font-size: 2em; /* Tamanho bom para celular */
-    text-align: center;
-}
-
-.section-subtitle {
-    text-align: center;
-}
-
-/* Grids de Conteúdo (Compromissos, Produtos, etc.) */
-/* Por padrão, todos os grids serão uma coluna no celular. */
-.commitments-grid,
-.product-grid, /* Lembre-se que criamos esta classe no JS */
 .footer-content {
     display: flex;
-    flex-direction: column; /* Empilha os itens verticalmente */
-    gap: 30px; /* Espaçamento entre os itens empilhados */
-}
-
-/* Garante que o header se ajuste bem no mobile */
-.header-content {
-    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333;
 }
 
-/* Esconde o menu de desktop e mostra o botão "sanduíche" no celular */
-.menu-desktop {
-    display: none;
-}
-.btn-abrir-menu {
-    display: block;
-}
+.footer-section { flex: 1; min-width: 200px; }
 
-
-/* --- TABLETS (Telas a partir de 768px de largura) --- */
-@media (min-width: 768px) {
-
-    /* Ajusta o tamanho dos títulos para telas maiores */
-    .section-title {
-        font-size: 2.5em;
-    }
-
-    /* O grid de "Nossos Compromissos" agora terá 3 colunas */
-    .commitments-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-
-    /* O grid de produtos terá 2 colunas no tablet */
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-
-    /* O rodapé se organiza em um grid de 2x2 */
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-    }
+/* Logo no Rodapé */
+.footer-logo { 
+    max-width: 120px; 
+    margin-bottom: 15px; 
+    filter: grayscale(100%) brightness(200%); /* Deixa logo branca/cinza */
 }
 
+.footer-section h4 {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
 
-/* --- DESKTOPS (Telas a partir de 1024px de largura) --- */
-@media (min-width: 1024px) {
+.footer-section p { line-height: 1.6; color: #bbb; }
 
-    /* Mostra o menu de desktop e esconde o botão "sanduíche" */
-    .menu-desktop {
-        display: block;
-    }
-    .btn-abrir-menu {
-        display: none;
-    }
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section li { margin-bottom: 10px; }
+.footer-section a { 
+    color: #bbb; text-decoration: none; transition: color 0.3s; 
+}
+.footer-section a:hover { color: #fff; }
 
-    /* Ajusta os títulos para telas grandes */
-    .section-title {
-        font-size: 3em;
-    }
+/* Ícones Sociais (Verdes) */
+.footer-section.social a { 
+    font-size: 1.5rem; 
+    margin-right: 15px; 
+    color: #28a745; /* Verde da marca */
+    transition: 0.3s;
+}
+.footer-section.social a:hover { color: #fff; }
 
-    /* O grid de produtos agora terá 3 colunas no desktop */
-    .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    /* O rodapé agora terá 4 colunas, uma para cada seção */
-    .footer-content {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    color: #777;
+    font-size: 0.85em;
+}
 
-    /* Ajuste fino para a primeira seção do rodapé (com a logo) */
-    .footer-content .footer-section.about {
-        grid-column: span 1; /* Ocupa uma coluna */
-    }
+.btn-admin {
+    display: inline-block; margin-top: 15px; color: #555; text-decoration: none;
+}
+.btn-admin:hover { color: #888; }
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .left-panel { display: none; }
+    .right-panel { padding: 0; } /* Remove padding do container principal no mobile */
+    .top-actions, .form-content { padding: 30px 20px; }
+    .site-footer { padding: 40px 20px; }
+}
+
+@media (max-width: 600px) {
+    .row { flex-direction: column; gap: 0; }
+    .footer-content { flex-direction: column; }
 }

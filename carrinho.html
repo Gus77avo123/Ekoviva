@@ -1,90 +1,175 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Carrinho - eKoviva</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="carrinho.css">
 </head>
+
 <body>
-    <div class="top-bar">
-        <div class="container-top">
-             <div class="language-switcher">
-                <a href="#" class="lang-link active" data-lang="pt">PT</a>
-                <a href="#" class="lang-link" data-lang="en">EN</a>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script> new window.VLibras.Widget('https://vlibras.gov.br/app'); </script>
+
+    <div id="toast-container"></div>
+
+    <header class="header-bar">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo-link">
+                    <img src="./imagem/logo2.png" alt="eKoviva" class="logo-img">
+                </a>
+                <div class="header-separator"></div>
+                <div class="cart-title-wrapper"><i class="bi bi-cart3"></i></div>
+            </div>
+            <div class="header-actions">
+                <div class="language-switcher">
+                    <a href="#" class="lang-link active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-link" data-lang="en">EN</a>
+                </div>
+                <button class="btn-abrir-menu" onclick="openMenu()"><i class="bi bi-list"></i></button>
             </div>
         </div>
-    </div>
-    <header>
-        <h1 data-lang-key="headerTitle"><i class="bi bi-cart4"></i> Meu Carrinho</h1>
     </header>
 
-    <div class="container">
-        <div class="cart-container">
-            <h2 data-lang-key="cartTitle">Itens no Carrinho</h2>
-            <div id="cart-display-area"></div>
-            
-            <div id="summary-section" class="summary-container" style="display: none;">
-                <div class="summary-box">
-                    <p><span data-lang-key="summarySubtotal">Subtotal:</span> <span id="subtotal-price">R$ 0,00</span></p>
-                    <p><span data-lang-key="summaryShipping">Frete:</span> <span id="freight-price">R$ 0,00</span></p>
-                    <p class="total"><span data-lang-key="summaryTotal">Total a Pagar:</span> <span id="total-price">R$ 0,00</span></p>
-                </div>
+    <aside id="menu-mobile" class="menu-movel">
+        <div class="menu-header">
+            <h3>eKoviva</h3>
+            <button class="btn-fechar" onclick="closeMenu()"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <nav>
+            <h4 class="menu-section-title" data-lang-key="footerNav">Navegação</h4>
+            <ul>
+                <li><a href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+                <li><a href="sobre.html"><i class="bi bi-info-circle"></i> <span data-lang-key="footerAbout">Sobre o Projeto</span></a></li>
+                <li><a href="index.html#products"><i class="bi bi-box-seam"></i> <span data-lang-key="footerProducts">Produtos</span></a></li>
+                <li><a href="cadastro.html"><i class="bi bi-person-plus"></i> <span data-lang-key="footerRegister">Cadastro</span></a></li>
+                <li style="margin-top: 20px; border-top: 1px solid #444; padding-top: 20px;">
+                    <a href="#" onclick="logout()" style="color: #ff6b6b;"><i class="bi bi-box-arrow-right"></i> Sair</a>
+                </li>
+            </ul>
+            <div class="menu-contact">
+                <h4 data-lang-key="footerContact">Contato</h4>
+                <p><i class="bi bi-envelope"></i> contato@ekoviva.com.br</p>
             </div>
+        </nav>
+    </aside>
 
-            <div id="cart-actions-section" class="cart-actions" style="display: none;">
-                <button class="back-btn" onclick="goBack('index.html')"><i class="bi bi-arrow-left"></i> <span data-lang-key="btnContinue">Continuar Comprando</span></button>
-                <button class="clear-cart-btn" onclick="clearCart()"><i class="bi bi-trash"></i> <span data-lang-key="btnClear">Limpar Carrinho</span></button>
-                <button class="checkout-btn" onclick="proceedToPayment()"><span data-lang-key="btnCheckout">Ir para o Pagamento</span> <i class="bi bi-arrow-right"></i></button>
+    <div id="overlay-menu" class="overlay-menu" onclick="closeMenu()"></div>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <h2 class="cart-page-title" data-lang-key="cartTitle">Itens no Carrinho</h2>
+
+            <div class="cart-layout">
+                
+                <div class="cart-container" id="cart-list-container">
+                    <div id="cart-display-area">
+                        </div>
+                </div>
+
+                <div id="summary-section" class="summary-wrapper" style="display: none;">
+                    <div class="summary-box">
+                        <h3 class="summary-title" data-lang-key="summaryTitle">Resumo do Pedido</h3>
+                        
+                        <div class="summary-row">
+                            <span data-lang-key="summarySubtotal">Subtotal:</span>
+                            <span id="subtotal-price">R$ 0,00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span data-lang-key="summaryShipping">Frete (5%):</span>
+                            <span id="freight-price">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="summary-row total">
+                            <span data-lang-key="summaryTotal">Total:</span>
+                            <span id="total-price">R$ 0,00</span>
+                        </div>
+
+                        <div class="cart-actions">
+                            <button class="checkout-btn" onclick="proceedToPayment()">
+                                <span data-lang-key="btnCheckout">Finalizar Compra</span> <i class="bi bi-check-lg"></i>
+                            </button>
+                            <button class="back-btn" onclick="goBack('index.html')">
+                                <span data-lang-key="btnContinue">Continuar Comprando</span>
+                            </button>
+                            
+                            <div class="clear-cart-text">
+                                <button onclick="clearCart()"><i class="bi bi-trash"></i> <span data-lang-key="btnClear">Esvaziar Carrinho</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-     <footer class="site-footer">
-        <div class="interface">
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <a href="index.html"><img src="./imagem/logo2.png" alt="Logotipo eKoviva" class="footer-logo"></a>
-                    <p data-lang-key="footerDesc">Um projeto de estudantes de ADS para um mundo mais sustentável.</p>
-                </div>
-                <div class="footer-section links">
-                    <h4 data-lang-key="footerNav">Navegação</h4>
-                    <ul>
-                        <li><a href="sobre.html" data-lang-key="footerAbout">Sobre o Projeto</a></li>
-                        <li><a href="#products" data-lang-key="footerProducts">Produtos</a></li>
-                        <li><a href="cadastro.html" data-lang-key="footerRegister">Cadastro</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section contact">
-                    <h4 data-lang-key="footerContact">Contato</h4>
-                    <p>
-                        <i class="bi bi-geo-alt-fill"></i> Av. Exemplo Fictício, 1234<br>
-                        São Paulo, SP - 01234-567<br>
-                        <i class="bi bi-envelope-fill"></i> contato@ekoviva.com.br<br>
-                        <i class="bi bi-telephone-fill"></i> (11) 98765-4321
-                    </p>
-                </div>
+
+    <div id="modal-confirm" class="overlay-menu" style="z-index: 3000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 30px; border-radius: 12px; text-align: center; max-width: 300px;">
+            <i class="bi bi-exclamation-circle" style="font-size: 3rem; color: #dc3545;"></i>
+            <p id="confirm-msg" style="margin: 20px 0; font-size: 1.1rem; color: #555;">Tem certeza?</p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="closeModalConfirm()" style="padding: 10px 20px; border: 1px solid #ddd; background: #fff; border-radius: 8px; cursor: pointer;">Cancelar</button>
+                <button id="btn-confirm-yes" style="padding: 10px 20px; border: none; background: #dc3545; color: white; border-radius: 8px; cursor: pointer;">Sim, limpar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <a href="index.html" class="footer-brand-link">
+                   <img src="./imagem/logo2.png" alt="eKoviva Logo" class="footer-logo" style="filter: brightness(0) invert(1);"> 
+                </a>
+                <p data-lang-key="footerDesc">Um projeto de estudantes de ADS para um mundo mais sustentável.</p>
+            </div>
+            <div class="footer-section links">
+                <h3 data-lang-key="footerNav">Navegação</h3>
+                <ul>
+                    <li><a href="sobre.html" data-lang-key="footerAbout">Sobre o Projeto</a></li>
+                    <li><a href="index.html#products" data-lang-key="footerProducts">Produtos</a></li>
+                    <li><a href="cadastro.html" data-lang-key="footerRegister">Cadastro</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3 data-lang-key="footerContact">Contato</h3>
+                <div class="contact-item"><i class="bi bi-geo-alt-fill"></i><p>Av. Exemplo Fictício, 1234<br>São Paulo, SP - 01234-567</p></div>
+                <div class="contact-item"><i class="bi bi-envelope-fill"></i><a href="mailto:contato@ekoviva.com.br">contato@ekoviva.com.br</a></div>
+                <div class="contact-item"><i class="bi bi-telephone-fill"></i><p>(11) 98765-4321</p></div>
+            </div>
             <div class="footer-section social">
-    <h4 data-lang-key="footerSocial">Siga-nos</h4>
-    
-    <a href="https://www.instagram.com/SEU_USUARIO_AQUI" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-    
-    <a href="https://www.facebook.com/SUA_PAGINA_AQUI" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-    
-    <a href="https://wa.me/5511999998888" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-</div>
+                <h3 data-lang-key="footerSocial">Siga-nos</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p data-lang-key="footerRights">&copy; 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos reservados.</p>
-                <p style="font-size: 0.8em; margin-top: 10px; color: #aaa;" data-lang-key="footerLgpd">
-                    Este site respeita a sua privacidade. Estamos em conformidade com a Lei Geral de Proteção de Dados (LGPD). Para saber mais, acesse nossa <a href="politica-privacidade.html" target="_blank" style="color: #ccc; text-decoration: underline;">Política de Privacidade</a>.
-                </p>
-                <a href="bancodedados.html" class="btn-admin" target="_blank" data-lang-key="footerAdmin">Gerenciar Dados</a>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-lang-key="footerRights">&copy; 2025 eKoviva - Projeto Integrador Acadêmico. Todos os direitos reservados.</p>
+            <p data-lang-key="footerPrivacy" style="font-size: 0.8rem; margin-top: 8px; opacity: 0.7;">
+                Este site respeita a sua privacidade e LGPD. <a href="#">Política de Privacidade</a>.
+            </p>
+            <a href="bancodedados.html" class="btn-admin" target="_blank" data-lang-key="footerAdmin">Gerenciar Dados</a>
         </div>
     </footer>
 
     <script src="carrinho.js"></script>
+    <script>
+        function openMenu() { document.getElementById("menu-mobile").classList.add("abrir-menu"); document.getElementById("overlay-menu").classList.add("ativo"); }
+        function closeMenu() { document.getElementById("menu-mobile").classList.remove("abrir-menu"); document.getElementById("overlay-menu").classList.remove("ativo"); }
+        function logout() { localStorage.removeItem("clienteLogado"); window.location.href = "index.html"; }
+    </script>
 </body>
 </html>
